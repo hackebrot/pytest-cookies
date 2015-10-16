@@ -9,7 +9,8 @@ def test_cookies_fixture(testdir):
         def test_valid_fixture(cookies):
             assert hasattr(cookies, 'bake')
             assert callable(cookies.bake)
-            assert callable(cookies.bake)
+            assert cookies.error is None
+            assert cookies.project is None
     """)
 
     # run pytest with the following cmd args
