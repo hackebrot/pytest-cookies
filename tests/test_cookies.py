@@ -33,4 +33,5 @@ def test_help_message(testdir):
     # fnmatch_lines does an assertion internally
     result.stdout.fnmatch_lines([
         'cookies:',
+        '*--output-dir=OUTPUT_DIR',
     ])
