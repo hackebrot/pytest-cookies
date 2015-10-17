@@ -7,7 +7,8 @@ from cookiecutter.main import cookiecutter
 
 class Cookies(object):
     """Class to provide convenient access to the cookiecutter API."""
-    error = None
+    exception = None
+    exit_code = 0
     project = None
 
     def __init__(self, template, output_dir):
@@ -22,8 +23,13 @@ class Cookies(object):
                 extra_context=extra_context,
                 output_dir=self._output_dir
             )
+        except SystemExit as e:
+            if e.code != 0:
+                self.exception = e
+            self.exit_code = e.code
         except Exception as e:
-            self.error = e
+            self.exception = e
+            self.exit_code = -1
         else:
             self.project = project_dir
 
