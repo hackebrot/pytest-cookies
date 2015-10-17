@@ -1,6 +1,17 @@
 # -*- coding: utf-8 -*-
 
 
+def test_help_message(testdir):
+    result = testdir.runpytest(
+        '--help',
+    )
+    # fnmatch_lines does an assertion internally
+    result.stdout.fnmatch_lines([
+        'cookies:',
+        '*--output-dir=OUTPUT_DIR',
+    ])
+
+
 def test_cookies_fixture(testdir):
     """Make sure that pytest accepts the `cookies` fixture."""
 
@@ -24,14 +35,3 @@ def test_cookies_fixture(testdir):
 
     # make sure that that we get a '0' exit code for the testsuite
     assert result.ret == 0
-
-
-def test_help_message(testdir):
-    result = testdir.runpytest(
-        '--help',
-    )
-    # fnmatch_lines does an assertion internally
-    result.stdout.fnmatch_lines([
-        'cookies:',
-        '*--output-dir=OUTPUT_DIR',
-    ])
