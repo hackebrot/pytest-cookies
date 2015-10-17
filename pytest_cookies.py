@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import py
 import pytest
 
 from cookiecutter.main import cookiecutter
@@ -31,27 +32,27 @@ class Cookies(object):
             self.exception = e
             self.exit_code = -1
         else:
-            self.project = project_dir
+            self.project = py.path.local(project_dir)
 
 
 @pytest.fixture
 def cookies(request, tmpdir):
-    output_dir = request.config.option.output_dir
+    template_dir = request.config.option.template
+    output_dir = str(tmpdir.mkdir('cookies'))
 
-    if not output_dir:
-        output_dir = str(tmpdir.mkdir('cookies_output'))
-
-    _cookies = Cookies('.', output_dir)
+    _cookies = Cookies(template_dir, output_dir)
     return _cookies
 
 
 def pytest_addoption(parser):
     group = parser.getgroup('cookies')
     group.addoption(
-        '--output-dir',
+        '--template',
         action='store',
-        dest='output_dir',
-        help='Set the output directory for Cookiecutter'
+        default='.',
+        dest='template',
+        help='specify the template to be rendered',
+        type='string',
     )
 
     parser.addini('HELLO', 'Dummy pytest.ini setting')
