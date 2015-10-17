@@ -54,5 +54,3 @@ def pytest_addoption(parser):
         help='specify the template to be rendered',
         type='string',
     )
-
-    parser.addini('HELLO', 'Dummy pytest.ini setting')
