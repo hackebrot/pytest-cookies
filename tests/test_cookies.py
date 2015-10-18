@@ -22,9 +22,6 @@ def test_cookies_fixture(testdir):
         def test_valid_fixture(cookies):
             assert hasattr(cookies, 'bake')
             assert callable(cookies.bake)
-            assert cookies.exception is None
-            assert cookies.exit_code == 0
-            assert cookies.project is None
     """)
 
     # run pytest with the following cmd args
@@ -62,11 +59,20 @@ def test_cookies_bake(testdir):
 
     testdir.makepyfile("""
         def test_bake_project(cookies):
-            cookies.bake(extra_context={'repo_name': 'helloworld'})
+            result = cookies.bake(extra_context={'repo_name': 'helloworld'})
 
-            assert cookies.exit_code == 0
-            assert cookies.exception is None
-            assert cookies.project.basename == 'helloworld'
+            assert result.exit_code == 0
+            assert result.exception is None
+            assert result.project.basename == 'helloworld'
+            assert result.project.isdir()
+
+
+        def test_bake_should_create_new_output(cookies):
+            first_result = cookies.bake()
+            assert first_result.project.dirname.endswith('bake00')
+
+            second_result = cookies.bake()
+            assert second_result.project.dirname.endswith('bake01')
     """)
 
     # run pytest with the following cmd args
