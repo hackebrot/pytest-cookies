@@ -1,5 +1,5 @@
 pytest-cookies
-===================================
+==============
 
 .. image:: https://travis-ci.org/hackebrot/pytest-cookies.svg?branch=master
     :target: https://travis-ci.org/hackebrot/pytest-cookies
@@ -10,11 +10,6 @@ pytest-cookies
     :alt: See Build Status on AppVeyor
 
 A Pytest plugin for your Cookiecutter templates
-
-----
-
-This `Pytest`_ plugin was generated with `Cookiecutter`_ along with `@hackebrot`_'s `Cookiecutter-pytest-plugin`_ template.
-
 
 Features
 --------
