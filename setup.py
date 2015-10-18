@@ -25,7 +25,7 @@ setup(
     py_modules=['pytest_cookies'],
     install_requires=[
         'pytest>=2.8.1',
-        'cookiecutter>=1.1.0'
+        'cookiecutter>=1.2.1'
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
