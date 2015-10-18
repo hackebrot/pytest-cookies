@@ -19,7 +19,8 @@ environment:
 init:
   - "%PYTHON%/python -V"
   - "%PYTHON%/python -c \"import struct;print( 8 * struct.calcsize(\'P\'))\""
-  - "%PYTHON%/python -c \"import platform;print(platform.system())\""
+  - "%PYTHON%/python -c \"import sys;print(sys.version_info[0] == 2)\""
+  - "%PYTHON%/python -c \"import platform;print(platform.system().lower().startswith(\'windows\'))\""
 
 install:
   - "%PYTHON%/Scripts/easy_install -U pip"
