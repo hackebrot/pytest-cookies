@@ -12,12 +12,12 @@ class Result(object):
     def __init__(self, exception=None, exit_code=0, project_dir=None):
         self.exception = exception
         self.exit_code = exit_code
-        self.project_dir = project_dir
+        self._project_dir = project_dir
 
     @property
     def project(self):
         if self.exception is None:
-            return py.path.local(self.project_dir)
+            return py.path.local(self._project_dir)
         return None
 
     def __repr__(self):
