@@ -82,3 +82,37 @@ def test_cookies_bake(testdir):
     result.stdout.fnmatch_lines([
         '*::test_bake_project PASSED',
     ])
+
+
+def test_cookies_bake_should_handle_exception(testdir):
+    """Programmatically create a **Cookiecutter** template and make sure that
+    cookies.bake() handles exceptions that happen during project generation.
+
+    We expect **Cookiecutter** to raise a `NonTemplatedInputDirException`.
+    """
+    template = testdir.tmpdir.ensure('cookiecutter-fail', dir=True)
+
+    template_config = {
+        'repo_name': 'foobar',
+        'short_description': 'Test Project'
+    }
+    template.join('cookiecutter.json').write(json.dumps(template_config))
+
+    template.ensure('cookiecutter.repo_name', dir=True)
+
+    testdir.makepyfile("""
+        def test_bake_should_fail(cookies):
+            result = cookies.bake()
+
+            assert result.exit_code == -1
+            assert result.exception is not None
+            assert result.project is None
+    """)
+
+    # run pytest with the following cmd args
+    result = testdir.runpytest('-v', '--template={}'.format(template))
+
+    # fnmatch_lines does an assertion internally
+    result.stdout.fnmatch_lines([
+        '*::test_bake_should_fail PASSED',
+    ])
