@@ -9,6 +9,10 @@ pytest-cookies
     :target: https://ci.appveyor.com/project/hackebrot/pytest-cookies/branch/master
     :alt: See Build Status on AppVeyor
 
+.. image:: https://readthedocs.org/projects/pytest-cookies/badge/?version=latest
+    :target: http://pytest-cookies.readthedocs.org/en/latest/?badge=latest
+    :alt: Documentation Status
+
 A Pytest plugin for your Cookiecutter templates
 
 Features
