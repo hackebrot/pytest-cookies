@@ -67,9 +67,7 @@ class Cookies(object):
 def cookies(request, tmpdir):
     template_dir = request.config.option.template
     output_factory = tmpdir.mkdir('cookies').mkdir
-
-    _cookies = Cookies(template_dir, output_factory)
-    return _cookies
+    return Cookies(template_dir, output_factory)
 
 
 def pytest_addoption(parser):
