@@ -3,17 +3,6 @@
 import json
 
 
-def test_help_message(testdir):
-    result = testdir.runpytest(
-        '--help',
-    )
-    # fnmatch_lines does an assertion internally
-    result.stdout.fnmatch_lines([
-        'cookies:',
-        '*--template=TEMPLATE*',
-    ])
-
-
 def test_cookies_fixture(testdir):
     """Make sure that pytest accepts the `cookies` fixture."""
 
