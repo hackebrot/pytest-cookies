@@ -32,6 +32,15 @@ Pytest-Cookies
 no boilerplate testing. Its hook-baesd customization system supports integration
 of external plugins such as **pytest-cookies**.
 
+Installation
+------------
+
+**pytest-cookies** is available for download from `PyPI`_ via `pip`_::
+
+    $ pip install pytest-cookies
+
+It will automatically install `pytest`_ along with `cookiecutter`_.
+
 Features
 --------
 
@@ -73,7 +82,7 @@ Issues
 
 If you encounter any problems, please `file an issue`_ along with a detailed description.
 
-.. _`Cookiecutter`: https://github.com/audreyr/cookiecutter
+.. _`cookiecutter`: https://github.com/audreyr/cookiecutter
 .. _`@hackebrot`: https://github.com/hackebrot
 .. _`MIT`: http://opensource.org/licenses/MIT
 .. _`BSD-3`: http://opensource.org/licenses/BSD-3-Clause
