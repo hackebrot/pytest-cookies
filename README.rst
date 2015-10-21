@@ -47,10 +47,28 @@ Installation
 
 It will automatically install `pytest`_ along with `cookiecutter`_.
 
-Features
---------
+Usage
+-----
 
-* TODO
+The ``cookies.bake()`` generates a new project from your template based on the
+default values specified in ``cookiecutter.json``:
+
+.. code-block:: python
+
+    def test_bake_project(cookies):
+        result = cookies.bake(extra_context={'repo_name': 'helloworld'})
+
+        assert result.exit_code == 0
+        assert result.exception is None
+        assert result.project.basename == 'helloworld'
+        assert result.project.isdir()
+
+Its ``bake`` method accepts the ``extra_context`` keyword argument that will be
+passed to cookiecutter. The given dictionary will override the default values
+of the template context, allowing you to test arbitrary user input data.
+
+Please see the `Injecting Extra Context`_ section of the
+official cookiecutter documentation.
 
 
 Requirements
@@ -99,3 +117,4 @@ If you encounter any problems, please `file an issue`_ along with a detailed des
 .. _`tox`: https://tox.readthedocs.org/en/latest/
 .. _`pip`: https://pypi.python.org/pypi/pip/
 .. _`PyPI`: https://pypi.python.org/pypi
+.. _`Injecting Extra Context`: http://cookiecutter.readthedocs.org/en/latest/advanced_usage.html#injecting-extra-context
