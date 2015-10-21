@@ -70,6 +70,7 @@ def test_cookies_bake(testdir):
     # fnmatch_lines does an assertion internally
     result.stdout.fnmatch_lines([
         '*::test_bake_project PASSED',
+        '*::test_bake_should_create_new_output PASSED',
     ])
 
 
