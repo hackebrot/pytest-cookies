@@ -1,4 +1,4 @@
-pytest-cookies
+Pytest-Cookies
 ==============
 
 .. list-table::
@@ -28,7 +28,9 @@ pytest-cookies
     :target: http://pytest-cookies.readthedocs.org/en/latest/?badge=latest
     :alt: Documentation Status
 
-A Pytest plugin for your Cookiecutter templates
+`pytest`_ is a mature full-featured Python testing tool that provides easy
+no boilerplate testing. Its hook-baesd customization system supports integration
+of external plugins such as **pytest-cookies**.
 
 Features
 --------
