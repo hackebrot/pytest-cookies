@@ -58,9 +58,11 @@ def test_cookies_bake(testdir):
 
         def test_bake_should_create_new_output(cookies):
             first_result = cookies.bake()
+            assert first_result.exception is None
             assert first_result.project.dirname.endswith('bake00')
 
             second_result = cookies.bake()
+            assert second_result.exception is None
             assert second_result.project.dirname.endswith('bake01')
     """)
 
