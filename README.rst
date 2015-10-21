@@ -37,6 +37,8 @@ This plugin comes with a ``cookies`` fixture which is a wrapper for the
 template is working as expected and takes care of cleaning up after running the
 tests.
 
+.. image:: https://raw.github.com/audreyr/cookiecutter/aa309b73bdc974788ba265d843a65bb94c2e608e/cookiecutter_medium.png
+
 
 Installation
 ------------
