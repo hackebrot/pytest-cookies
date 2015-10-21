@@ -70,6 +70,28 @@ of the template context, allowing you to test arbitrary user input data.
 Please see the `Injecting Extra Context`_ section of the
 official cookiecutter documentation.
 
+Features
+--------
+
+``cookies.bake()`` returns a result instance with a bunch of useful fields that
+hold useful information:
+
+* ``exit_code``: is the exit code of cookiecutter, ``0`` means successful termination
+* ``exception``: is the exception that happened if one did
+* ``project``: a `py.path.local`_ object pointing to the rendered project
+
+The returned ``LocalPath`` instance provides you with a powerful interface
+to filesystem related information that comes in handy for validating the generated
+project layout and even file contents:
+
+.. code-block:: python
+
+    def test_readme(cookies):
+        result = cookies.bake()
+
+        readme_file = result.project.join('README.rst')
+        readme_lines = readme_file.readlines(cr=False)
+        assert readme_lines == ['helloworld', '==========']
 
 Requirements
 ------------
@@ -118,3 +140,4 @@ If you encounter any problems, please `file an issue`_ along with a detailed des
 .. _`pip`: https://pypi.python.org/pypi/pip/
 .. _`PyPI`: https://pypi.python.org/pypi
 .. _`Injecting Extra Context`: http://cookiecutter.readthedocs.org/en/latest/advanced_usage.html#injecting-extra-context
+.. _`py.path.local`: http://pylib.readthedocs.org/en/latest/path.html#py._path.local.LocalPath
