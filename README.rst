@@ -50,7 +50,7 @@ It will automatically install `pytest`_ along with `cookiecutter`_.
 Usage
 -----
 
-The ``cookies.bake()`` generates a new project from your template based on the
+The ``cookies.bake()`` method generates a new project from your template based on the
 default values specified in ``cookiecutter.json``:
 
 .. code-block:: python
@@ -63,7 +63,7 @@ default values specified in ``cookiecutter.json``:
         assert result.project.basename == 'helloworld'
         assert result.project.isdir()
 
-Its ``bake`` method accepts the ``extra_context`` keyword argument that will be
+It accepts the ``extra_context`` keyword argument that will be
 passed to cookiecutter. The given dictionary will override the default values
 of the template context, allowing you to test arbitrary user input data.
 
@@ -73,7 +73,7 @@ official cookiecutter documentation.
 Features
 --------
 
-``cookies.bake()`` returns a result instance with a bunch of useful fields that
+``cookies.bake()`` returns a result instance with a bunch of fields that
 hold useful information:
 
 * ``exit_code``: is the exit code of cookiecutter, ``0`` means successful termination
@@ -81,7 +81,7 @@ hold useful information:
 * ``project``: a `py.path.local`_ object pointing to the rendered project
 
 The returned ``LocalPath`` instance provides you with a powerful interface
-to filesystem related information that comes in handy for validating the generated
+to filesystem related information, that comes in handy for validating the generated
 project layout and even file contents:
 
 .. code-block:: python
@@ -100,13 +100,13 @@ If you encounter any problems, please `file an issue`_ along with a detailed des
 
 Contributing
 ------------
-Contributions are very welcome. Tests can be run with `tox`_, please make sure
+Contributions are very welcome! Tests can be run with `tox`_, please make sure
 all of the tests are green before you submit a pull request.
 
 Code of Conduct
 ---------------
 
-Everyone interacting in the Cookiecutter Pytest Plugin project's codebases, issue trackers, chat
+Everyone interacting in the Pyest-Cookies project's codebases, issue trackers, chat
 rooms, and mailing lists is expected to follow the `PyPA Code of Conduct`_.
 
 License
