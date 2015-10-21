@@ -1,19 +1,30 @@
 pytest-cookies
 ==============
 
-.. image:: https://badges.gitter.im/Join%20Chat.svg
+.. list-table::
+    :widths: 40 60
+    :stub-columns: 1
+
+    * - Community
+      - |gitter|
+    * - Tests
+      - |travis-ci| |appveyor|
+    * - Docs
+      - |rtfd|
+
+.. |gitter| image:: https://badges.gitter.im/Join%20Chat.svg
    :alt: Join the chat at https://gitter.im/hackebrot/pytest-cookies
    :target: https://gitter.im/hackebrot/pytest-cookies?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 
-.. image:: https://travis-ci.org/hackebrot/pytest-cookies.svg?branch=master
+.. |travis-ci| image:: https://travis-ci.org/hackebrot/pytest-cookies.svg?branch=master
     :target: https://travis-ci.org/hackebrot/pytest-cookies
     :alt: See Build Status on Travis CI
 
-.. image:: https://ci.appveyor.com/api/projects/status/github/hackebrot/pytest-cookies?branch=master
+.. |appveyor| image:: https://ci.appveyor.com/api/projects/status/github/hackebrot/pytest-cookies?branch=master
     :target: https://ci.appveyor.com/project/hackebrot/pytest-cookies/branch/master
     :alt: See Build Status on AppVeyor
 
-.. image:: https://readthedocs.org/projects/pytest-cookies/badge/?version=latest
+.. |rtfd| image:: https://readthedocs.org/projects/pytest-cookies/badge/?version=latest
     :target: http://pytest-cookies.readthedocs.org/en/latest/?badge=latest
     :alt: Documentation Status
 
