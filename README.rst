@@ -1,6 +1,10 @@
 pytest-cookies
 ==============
 
+.. image:: https://badges.gitter.im/Join%20Chat.svg
+   :alt: Join the chat at https://gitter.im/hackebrot/pytest-cookies
+   :target: https://gitter.im/hackebrot/pytest-cookies?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+
 .. image:: https://travis-ci.org/hackebrot/pytest-cookies.svg?branch=master
     :target: https://travis-ci.org/hackebrot/pytest-cookies
     :alt: See Build Status on Travis CI
