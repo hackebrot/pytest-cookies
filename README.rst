@@ -93,21 +93,27 @@ project layout and even file contents:
         readme_lines = readme_file.readlines(cr=False)
         assert readme_lines == ['helloworld', '==========']
 
+Issues
+------
+
+If you encounter any problems, please `file an issue`_ along with a detailed description.
+
 Contributing
 ------------
 Contributions are very welcome. Tests can be run with `tox`_, please make sure
 all of the tests are green before you submit a pull request.
+
+Code of Conduct
+---------------
+
+Everyone interacting in the Cookiecutter Pytest Plugin project's codebases, issue trackers, chat
+rooms, and mailing lists is expected to follow the `PyPA Code of Conduct`_.
 
 License
 -------
 
 Distributed under the terms of the `MIT`_ license, "pytest-cookies" is free and open source software
 
-
-Issues
-------
-
-If you encounter any problems, please `file an issue`_ along with a detailed description.
 
 .. _`cookiecutter`: https://github.com/audreyr/cookiecutter
 .. _`@hackebrot`: https://github.com/hackebrot
@@ -120,3 +126,4 @@ If you encounter any problems, please `file an issue`_ along with a detailed des
 .. _`PyPI`: https://pypi.python.org/pypi
 .. _`Injecting Extra Context`: http://cookiecutter.readthedocs.org/en/latest/advanced_usage.html#injecting-extra-context
 .. _`py.path.local`: http://pylib.readthedocs.org/en/latest/path.html#py._path.local.LocalPath
+.. _`PyPA Code of Conduct`: https://www.pypa.io/en/latest/code-of-conduct/
