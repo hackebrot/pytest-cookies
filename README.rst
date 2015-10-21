@@ -93,29 +93,10 @@ project layout and even file contents:
         readme_lines = readme_file.readlines(cr=False)
         assert readme_lines == ['helloworld', '==========']
 
-Requirements
-------------
-
-* TODO
-
-
-Installation
-------------
-
-You can install "pytest-cookies" via `pip`_ from `PyPI`_::
-
-    $ pip install pytest-cookies
-
-
-Usage
------
-
-* TODO
-
 Contributing
 ------------
-Contributions are very welcome. Tests can be run with `tox`_, please ensure
-the coverage at least stays the same before you submit a pull request.
+Contributions are very welcome. Tests can be run with `tox`_, please make sure
+all of the tests are green before you submit a pull request.
 
 License
 -------
@@ -131,8 +112,6 @@ If you encounter any problems, please `file an issue`_ along with a detailed des
 .. _`cookiecutter`: https://github.com/audreyr/cookiecutter
 .. _`@hackebrot`: https://github.com/hackebrot
 .. _`MIT`: http://opensource.org/licenses/MIT
-.. _`BSD-3`: http://opensource.org/licenses/BSD-3-Clause
-.. _`GNU GPL v3.0`: http://www.gnu.org/licenses/gpl-3.0.txt
 .. _`cookiecutter-pytest-plugin`: https://github.com/pytest-dev/cookiecutter-pytest-plugin
 .. _`file an issue`: https://github.com/hackebrot/pytest-cookies/issues
 .. _`pytest`: https://github.com/pytest-dev/pytest
