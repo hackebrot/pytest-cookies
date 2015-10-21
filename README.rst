@@ -32,6 +32,12 @@ Pytest-Cookies
 no boilerplate testing. Its hook-baesd customization system supports integration
 of external plugins such as **pytest-cookies**.
 
+This plugin comes with a ``cookies`` fixture which is a wrapper for the
+`cookiecutter`_ API for generating projects. It helps you verify that your
+template is working as expected and takes care of cleaning up after running the
+tests.
+
+
 Installation
 ------------
 
