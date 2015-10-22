@@ -24,7 +24,7 @@ Pytest-Cookies
     :alt: Documentation Status
 
 `pytest`_ is a mature full-featured Python testing tool that provides easy
-no boilerplate testing. Its hook-baesd customization system supports integration
+no boilerplate testing. Its hook-based customization system supports integration
 of external plugins such as **pytest-cookies**.
 
 This plugin comes with a ``cookies`` fixture which is a wrapper for the
@@ -103,7 +103,7 @@ all of the tests are green before you submit a pull request.
 Code of Conduct
 ---------------
 
-Everyone interacting in the Pyest-Cookies project's codebases, issue trackers, chat
+Everyone interacting in the Pytest-Cookies project's codebases, issue trackers, chat
 rooms, and mailing lists is expected to follow the `PyPA Code of Conduct`_.
 
 License
