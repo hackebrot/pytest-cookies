@@ -103,13 +103,13 @@ all of the tests are green before you submit a pull request.
 Code of Conduct
 ---------------
 
-Everyone interacting in the Pytest-Cookies project's codebases, issue trackers, chat
+Everyone interacting in the Pytest-Cookies project's codebase, issue trackers, chat
 rooms, and mailing lists is expected to follow the `PyPA Code of Conduct`_.
 
 License
 -------
 
-Distributed under the terms of the `MIT`_ license, "pytest-cookies" is free and open source software
+Distributed under the terms of the `MIT`_ license, Pytest-Cookies is free and open source software
 
 
 .. _`cookiecutter`: https://github.com/audreyr/cookiecutter
