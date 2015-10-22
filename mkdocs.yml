@@ -8,3 +8,4 @@ repo_url: https://github.com/hackebrot/pytest-cookies
 
 pages:
 - Home: index.md
+- Installation: installation.md
