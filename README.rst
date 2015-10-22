@@ -1,16 +1,7 @@
 Pytest-Cookies
 ==============
 
-.. list-table::
-    :widths: 40 60
-    :stub-columns: 1
-
-    * - Community
-      - |gitter|
-    * - Tests
-      - |travis-ci| |appveyor|
-    * - Docs
-      - |rtfd|
+|gitter| |rtfd| |travis-ci| |appveyor|
 
 .. |gitter| image:: https://badges.gitter.im/Join%20Chat.svg
    :alt: Join the chat at https://gitter.im/hackebrot/pytest-cookies
