@@ -11,7 +11,7 @@ tests.
 
 ## GitHub Project
 
-https://github.com/hackebrot/pytest-cookies
+[https://github.com/hackebrot/pytest-cookies](https://github.com/hackebrot/pytest-cookies)
 
 ![Cookiecutter Logo](https://raw.github.com/audreyr/cookiecutter/aa309b73bdc974788ba265d843a65bb94c2e608e/cookiecutter_medium.png)
 
