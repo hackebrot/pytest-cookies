@@ -1,7 +1,11 @@
 Pytest-Cookies
 ==============
 
-|gitter| |rtfd| |travis-ci| |appveyor|
+|gitter| |pypi| |rtfd| |travis-ci| |appveyor|
+
+.. |pypi| image:: https://img.shields.io/pypi/v/pytest-cookies.svg
+   :target: https://pypi.python.org/pypi/pytest-cookies
+   :alt: PyPI Package
 
 .. |gitter| image:: https://badges.gitter.im/Join%20Chat.svg
    :alt: Join the chat at https://gitter.im/hackebrot/pytest-cookies
