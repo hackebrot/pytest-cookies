@@ -30,19 +30,21 @@ setup(
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
-        'Topic :: Software Development :: Testing',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python',
-        'Operating System :: OS Independent',
-        'License :: OSI Approved :: MIT License',
+        'Topic :: Software Development :: Testing',
     ],
     entry_points={
         'pytest11': [
             'cookies = pytest_cookies',
         ],
     },
+    keywords=['cookiecutter', 'pytest'],
 )
