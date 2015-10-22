@@ -1,5 +1,7 @@
 # Welcome to Pytest-Cookies
 
+[![Join Chat on Gitter.im][gitter_badge]][gitter]
+
 [pytest] is a mature full-featured Python testing tool that provides easy
 no boilerplate testing. Its hook-baesd customization system supports integration
 of external plugins such as **pytest-cookies**.
