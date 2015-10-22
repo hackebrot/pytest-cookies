@@ -1,6 +1,10 @@
 site_name: pytest-cookies
 site_description: A Pytest plugin for your Cookiecutter templates
+site_author: Raphael Pierzina
 
 theme: readthedocs
 
 repo_url: https://github.com/hackebrot/pytest-cookies
+
+pages:
+- Home: index.md
