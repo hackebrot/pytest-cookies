@@ -3,21 +3,25 @@ Pytest-Cookies
 
 |gitter| |pypi| |pyversions| |license| |rtfd| |travis-ci| |appveyor|
 
-.. |pyversions| image:: https://img.shields.io/pypi/pyversions/pytest-cookies.svg
-   :target: https://pypi.python.org/pypi/pytest-cookies/
-   :alt: PyPI Python Versions
+.. |gitter| image:: https://badges.gitter.im/Join%20Chat.svg
+   :alt: Join the chat at https://gitter.im/hackebrot/pytest-cookies
+   :target: https://gitter.im/hackebrot/pytest-cookies?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 
 .. |pypi| image:: https://img.shields.io/pypi/v/pytest-cookies.svg
    :target: https://pypi.python.org/pypi/pytest-cookies
    :alt: PyPI Package
 
+.. |pyversions| image:: https://img.shields.io/pypi/pyversions/pytest-cookies.svg
+   :target: https://pypi.python.org/pypi/pytest-cookies/
+   :alt: PyPI Python Versions
+
 .. |license| image:: https://img.shields.io/pypi/l/pytest-cookies.svg
    :target: https://pypi.python.org/pypi/pytest-cookies
    :alt: PyPI Package License
 
-.. |gitter| image:: https://badges.gitter.im/Join%20Chat.svg
-   :alt: Join the chat at https://gitter.im/hackebrot/pytest-cookies
-   :target: https://gitter.im/hackebrot/pytest-cookies?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+.. |rtfd| image:: https://readthedocs.org/projects/pytest-cookies/badge/?version=latest
+    :target: http://pytest-cookies.readthedocs.org/en/latest/?badge=latest
+    :alt: Documentation Status
 
 .. |travis-ci| image:: https://travis-ci.org/hackebrot/pytest-cookies.svg?branch=master
     :target: https://travis-ci.org/hackebrot/pytest-cookies
@@ -26,10 +30,6 @@ Pytest-Cookies
 .. |appveyor| image:: https://ci.appveyor.com/api/projects/status/github/hackebrot/pytest-cookies?branch=master
     :target: https://ci.appveyor.com/project/hackebrot/pytest-cookies/branch/master
     :alt: See Build Status on AppVeyor
-
-.. |rtfd| image:: https://readthedocs.org/projects/pytest-cookies/badge/?version=latest
-    :target: http://pytest-cookies.readthedocs.org/en/latest/?badge=latest
-    :alt: Documentation Status
 
 `pytest`_ is a mature full-featured Python testing tool that provides easy
 no boilerplate testing. Its hook-based customization system supports integration
