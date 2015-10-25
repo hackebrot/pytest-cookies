@@ -1,7 +1,11 @@
 Pytest-Cookies
 ==============
 
-|gitter| |pypi| |license| |rtfd| |travis-ci| |appveyor|
+|gitter| |pypi| |pyversions| |license| |rtfd| |travis-ci| |appveyor|
+
+.. |pyversions| image:: https://img.shields.io/pypi/pyversions/pytest-cookies.svg
+   :target: https://pypi.python.org/pypi/pytest-cookies/
+   :alt: PyPI Python Versions
 
 .. |pypi| image:: https://img.shields.io/pypi/v/pytest-cookies.svg
    :target: https://pypi.python.org/pypi/pytest-cookies
