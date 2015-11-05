@@ -3,6 +3,9 @@
 help:
 	@echo "clean-build - remove build artifacts"
 	@echo "clean-py - remove Python file artifacts"
+	@echo "clean- remove all file artifacts"
+
+clean: clean-build clean-py
 
 clean-build:
 	rm -rf build/
