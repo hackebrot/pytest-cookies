@@ -30,9 +30,10 @@ class Result(object):
 class Cookies(object):
     """Class to provide convenient access to the cookiecutter API."""
 
-    def __init__(self, template, output_factory):
+    def __init__(self, template, output_factory, config_file):
         self._template = template
         self._output_factory = output_factory
+        self._config_file = config_file
         self._counter = 0
 
     def _new_output_dir(self):
@@ -51,7 +52,8 @@ class Cookies(object):
                 self._template,
                 no_input=True,
                 extra_context=extra_context,
-                output_dir=self._new_output_dir()
+                output_dir=self._new_output_dir(),
+                config_file=str(self._config_file)
             )
         except SystemExit as e:
             if e.code != 0:
@@ -83,10 +85,10 @@ def _cookiecutter_config_file(tmpdir_factory):
 
 
 @pytest.fixture
-def cookies(request, tmpdir):
+def cookies(request, tmpdir, _cookiecutter_config_file):
     template_dir = request.config.option.template
     output_factory = tmpdir.mkdir('cookies').mkdir
-    return Cookies(template_dir, output_factory)
+    return Cookies(template_dir, output_factory, _cookiecutter_config_file)
 
 
 def pytest_addoption(parser):
