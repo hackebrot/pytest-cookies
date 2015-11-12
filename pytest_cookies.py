@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import json
 import py
 import pytest
 
@@ -61,6 +62,24 @@ class Cookies(object):
             exit_code = -1
 
         return Result(exception, exit_code, project_dir)
+
+
+@pytest.fixture(scope='session')
+def _cookiecutter_config_file(tmpdir_factory):
+    user_dir = tmpdir_factory.mktemp('user_dir')
+
+    cookiecutters_dir = user_dir.mkdir('cookiecutters')
+    replay_dir = user_dir.mkdir('cookiecutter_replay')
+
+    config_data = {
+        'cookiecutters_dir': str(cookiecutters_dir),
+        'replay_dir': str(replay_dir),
+        'default_context': {}
+    }
+
+    config_file = user_dir.join('config')
+    config_file.write(json.dumps(config_data))
+    return config_file
 
 
 @pytest.fixture

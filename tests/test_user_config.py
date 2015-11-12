@@ -9,22 +9,22 @@ def test_config(testdir):
         import json
 
 
-        def test_user_dir(tmpdir_factory, _config_file):
+        def test_user_dir(tmpdir_factory, _cookiecutter_config_file):
             basetemp = tmpdir_factory.getbasetemp()
 
-            assert _config_file.basename == 'config'
+            assert _cookiecutter_config_file.basename == 'config'
 
-            user_dir = _config_file.dirpath()
+            user_dir = _cookiecutter_config_file.dirpath()
             assert user_dir.fnmatch('user_dir?')
 
             assert user_dir.dirpath() == basetemp
 
 
-        def test_valid_cookiecutter_config(_config_file):
-            config_text = _config_file.read()
+        def test_valid_cookiecutter_config(_cookiecutter_config_file):
+            config_text = _cookiecutter_config_file.read()
             config = json.loads(config_text)
 
-            user_dir = _config_file.dirpath()
+            user_dir = _cookiecutter_config_file.dirpath()
 
             expected = {
                 'cookiecutters_dir': str(user_dir.join('cookiecutters')),
