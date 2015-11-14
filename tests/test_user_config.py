@@ -35,7 +35,7 @@ def test_config(testdir):
     """)
 
     # run pytest with the following cmd args
-    result = testdir.runpytest('-vv')
+    result = testdir.runpytest('-v')
 
     # fnmatch_lines does an assertion internally
     result.stdout.fnmatch_lines([
