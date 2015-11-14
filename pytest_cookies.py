@@ -80,6 +80,9 @@ def _cookiecutter_config_file(tmpdir_factory):
     }
 
     config_file = user_dir.join('config')
+
+    # Cookiecutter uses YAML which is a superset of JSON
+    # JSON is included in Python's standard lib whereas YAML is not.
     config_file.write(json.dumps(config_data))
     return config_file
 
