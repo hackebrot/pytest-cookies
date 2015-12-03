@@ -22,7 +22,7 @@ class Result(object):
         return None
 
     def __repr__(self):
-        return '<Result {}'.format(
+        return '<Result {}>'.format(
             self.exception and repr(self.exception) or self.project
         )
 
