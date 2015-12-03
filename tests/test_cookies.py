@@ -55,6 +55,8 @@ def test_cookies_bake(testdir):
             assert result.project.basename == 'helloworld'
             assert result.project.isdir()
 
+            assert str(result) == '<Result {}>'.format(result.project)
+
 
         def test_bake_should_create_new_output(cookies):
             first_result = cookies.bake()
