@@ -1,10 +1,15 @@
 # -*- coding: utf-8 -*-
 
-import json
 import py
 import pytest
 
 from cookiecutter.main import cookiecutter
+
+USER_CONFIG = u"""
+default_context:
+cookiecutters_dir: "{cookiecutters_dir}"
+replay_dir: "{replay_dir}"
+"""
 
 
 class Result(object):
@@ -73,17 +78,13 @@ def _cookiecutter_config_file(tmpdir_factory):
     cookiecutters_dir = user_dir.mkdir('cookiecutters')
     replay_dir = user_dir.mkdir('cookiecutter_replay')
 
-    config_data = {
-        'cookiecutters_dir': str(cookiecutters_dir),
-        'replay_dir': str(replay_dir),
-        'default_context': {}
-    }
-
+    config_text = USER_CONFIG.format(
+        cookiecutters_dir=cookiecutters_dir,
+        replay_dir=replay_dir,
+    )
     config_file = user_dir.join('config')
 
-    # Cookiecutter uses YAML which is a superset of JSON
-    # JSON is included in Python's standard lib whereas YAML is not.
-    config_file.write(json.dumps(config_data))
+    config_file.write_text(config_text, encoding='utf8')
     return config_file
 
 

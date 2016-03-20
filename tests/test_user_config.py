@@ -6,7 +6,7 @@ def test_config(testdir):
 
     # create a temporary pytest test module
     testdir.makepyfile("""
-        import json
+        import poyo
 
 
         def test_user_dir(tmpdir_factory, _cookiecutter_config_file):
@@ -22,7 +22,7 @@ def test_config(testdir):
 
         def test_valid_cookiecutter_config(_cookiecutter_config_file):
             config_text = _cookiecutter_config_file.read()
-            config = json.loads(config_text)
+            config = poyo.parse_string(config_text)
 
             user_dir = _cookiecutter_config_file.dirpath()
 
