@@ -6,7 +6,6 @@ import pytest
 from cookiecutter.main import cookiecutter
 
 USER_CONFIG = u"""
-default_context:
 cookiecutters_dir: "{cookiecutters_dir}"
 replay_dir: "{replay_dir}"
 """

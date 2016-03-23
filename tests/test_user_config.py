@@ -29,7 +29,6 @@ def test_config(testdir):
             expected = {
                 'cookiecutters_dir': str(user_dir.join('cookiecutters')),
                 'replay_dir': str(user_dir.join('cookiecutter_replay')),
-                'default_context': {}
             }
             assert config == expected
     """)
