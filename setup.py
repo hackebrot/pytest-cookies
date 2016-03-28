@@ -41,6 +41,7 @@ setup(
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python',
         'Topic :: Software Development :: Testing',
+        'Framework :: Pytest',
     ],
     entry_points={
         'pytest11': [
