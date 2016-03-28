@@ -119,6 +119,14 @@ License
 
 Distributed under the terms of the `MIT`_ license, Pytest-Cookies is free and open source software
 
+.. image:: https://opensource.org/trademarks/osi-certified/web/osi-certified-300x250.png
+   :height: 250
+   :width: 300
+   :scale: 50
+   :align: left
+   :alt: OSI certified
+   :target: https://opensource.org/
+
 
 .. _`cookiecutter`: https://github.com/audreyr/cookiecutter
 .. _`@hackebrot`: https://github.com/hackebrot
