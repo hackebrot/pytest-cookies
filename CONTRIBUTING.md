@@ -86,10 +86,8 @@ This should change the shell to look something like ``(pytest-cookies-env) $``
     $ git checkout -b name-of-your-bugfix-or-feature
     ```
 
-Now you can make your changes locally.
-
-5. When you're done making changes, use [tox][tox] to run checks against your
-   changes. Install it as follows:
+5. Now you can make your changes locally.When you're done making changes, use
+   [tox][tox] to run checks against your changes. Install it as follows:
 
     ``` bash
     $ pip install tox
