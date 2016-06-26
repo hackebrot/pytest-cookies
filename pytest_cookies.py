@@ -87,11 +87,25 @@ def _cookiecutter_config_file(tmpdir_factory):
     return config_file
 
 
-@pytest.fixture
+@pytest.yield_fixture
 def cookies(request, tmpdir, _cookiecutter_config_file):
+    """Yield an instance of the Cookies helper class that can be used to
+    generate a project from a template.
+
+    Run cookiecutter:
+        result = cookies.bake(extra_context={
+            'variable1': 'value1',
+            'variable2': 'value2',
+        })
+    """
     template_dir = request.config.option.template
-    output_factory = tmpdir.mkdir('cookies').mkdir
-    return Cookies(template_dir, output_factory, _cookiecutter_config_file)
+
+    output_dir = tmpdir.mkdir('cookies')
+    output_factory = output_dir.mkdir
+
+    yield Cookies(template_dir, output_factory, _cookiecutter_config_file)
+
+    output_dir.remove()
 
 
 def pytest_addoption(parser):
