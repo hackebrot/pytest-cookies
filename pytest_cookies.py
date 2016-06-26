@@ -44,7 +44,7 @@ class Cookies(object):
         dirname = 'bake{:02d}'.format(self._counter)
         output_dir = self._output_factory(dirname)
         self._counter += 1
-        return str(output_dir)
+        return output_dir
 
     def bake(self, extra_context=None):
         exception = None
@@ -56,7 +56,7 @@ class Cookies(object):
                 self._template,
                 no_input=True,
                 extra_context=extra_context,
-                output_dir=self._new_output_dir(),
+                output_dir=str(self._new_output_dir()),
                 config_file=str(self._config_file)
             )
         except SystemExit as e:
