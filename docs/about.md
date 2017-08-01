@@ -9,7 +9,7 @@ all of the tests are green before you submit a pull request.
 
 # Code of Conduct
 
-Everyone interacting in the Pyest-Cookies project's codebases, issue trackers, chat
+Everyone interacting in the Pytest-Cookies project's codebases, issue trackers, chat
 rooms, and mailing lists is expected to follow the [PyPA Code of Conduct].
 
 # License

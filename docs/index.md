@@ -3,7 +3,7 @@
 [![Join Chat on Gitter.im][gitter_badge]][gitter]
 
 [pytest] is a mature full-featured Python testing tool that provides easy
-no boilerplate testing. Its hook-baesd customization system supports integration
+no boilerplate testing. Its hook-based customization system supports integration
 of external plugins such as **pytest-cookies**.
 
 This plugin comes with a ``cookies`` fixture which is a wrapper for the
