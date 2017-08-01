@@ -75,6 +75,33 @@ of the template context, allowing you to test arbitrary user input data.
 Please see the `Injecting Extra Context`_ section of the
 official cookiecutter documentation.
 
+By default, ``cookies.bake`` looks for a `cookiecutter`_ template in the current
+directory.  This can be overridden on the command line by passing a
+``--template`` parameter to `pytest`_.
+
+To customise the `cookiecutter`_ template directory in a test, ``cookies.bake()``
+can also accept an optional ``template`` parameter:
+
+.. code-block:: python
+
+    def test_bake_custom_project(tmpdir, cookies):
+        template = tmpdir.ensure('cookiecutter-template', dir=True)
+        template.join('cookiecutter.json').write(
+            '{"repo_name": "example-project"}'
+        )
+
+        repo_dir = template.ensure('{{cookiecutter.repo_name}}', dir=True)
+        repo_dir.join('README.rst').write('{{cookiecutter.repo_name}}')
+
+        result = cookies.bake(
+            template=str(template),
+        )
+
+        assert result.exit_code == 0
+        assert result.exception is None
+        assert result.project.basename == 'example-project'
+        assert result.project.isdir()
+
 Features
 --------
 
