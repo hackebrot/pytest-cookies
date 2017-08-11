@@ -31,7 +31,7 @@ Pytest-Cookies
     :target: https://ci.appveyor.com/project/hackebrot/pytest-cookies/branch/master
     :alt: See Build Status on AppVeyor
 
-`pytest`_ is a mature full-featured Python testing tool that provides easy
+`pytest`_ is a mature full-featured Python testing tool that provides easy,
 no boilerplate testing. Its hook-based customization system supports integration
 of external plugins such as **pytest-cookies**.
 
@@ -82,12 +82,12 @@ Features
 hold useful information:
 
 * ``exit_code``: is the exit code of cookiecutter, ``0`` means successful termination
-* ``exception``: is the exception that happened if one did
+* ``exception``: is the exception that happened (if one did, ``None`` otherwise)
 * ``project``: a `py.path.local`_ object pointing to the rendered project
 
 The returned ``LocalPath`` instance provides you with a powerful interface
 to filesystem related information, that comes in handy for validating the generated
-project layout and even file contents:
+project layout and file contents:
 
 .. code-block:: python
 
@@ -105,6 +105,7 @@ If you encounter any problems, please `file an issue`_ along with a detailed des
 
 Contributing
 ------------
+
 Contributions are very welcome! Tests can be run with `tox`_, please make sure
 all of the tests are green before you submit a pull request.
 
@@ -117,7 +118,7 @@ rooms, and mailing lists is expected to follow the `PyPA Code of Conduct`_.
 License
 -------
 
-Distributed under the terms of the `MIT`_ license, Pytest-Cookies is free and open source software
+Distributed under the terms of the `MIT`_ license, Pytest-Cookies is free and open source software.
 
 .. image:: https://opensource.org/trademarks/osi-certified/web/osi-certified-120x100.png
    :align: left
@@ -134,6 +135,6 @@ Distributed under the terms of the `MIT`_ license, Pytest-Cookies is free and op
 .. _`tox`: https://tox.readthedocs.org/en/latest/
 .. _`pip`: https://pypi.python.org/pypi/pip/
 .. _`PyPI`: https://pypi.python.org/pypi
-.. _`Injecting Extra Context`: http://cookiecutter.readthedocs.org/en/latest/advanced_usage.html#injecting-extra-context
-.. _`py.path.local`: http://pylib.readthedocs.org/en/latest/path.html#py._path.local.LocalPath
+.. _`Injecting Extra Context`: http://cookiecutter.readthedocs.io/en/latest/advanced/injecting_content.html
+.. _`py.path.local`: http://py.readthedocs.io/en/latest/path.html#py._path.local.LocalPath
 .. _`PyPA Code of Conduct`: https://www.pypa.io/en/latest/code-of-conduct/
