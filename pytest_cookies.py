@@ -35,7 +35,7 @@ class Cookies(object):
     """Class to provide convenient access to the cookiecutter API."""
 
     def __init__(self, template, output_factory, config_file):
-        self._template = template
+        self._default_template = template
         self._output_factory = output_factory
         self._config_file = config_file
         self._counter = 0
@@ -51,9 +51,12 @@ class Cookies(object):
         exit_code = 0
         project_dir = None
 
+        if template is None:
+            template = self._default_template
+
         try:
             project_dir = cookiecutter(
-                template or self._template,
+                template,
                 no_input=True,
                 extra_context=extra_context,
                 output_dir=str(self._new_output_dir()),
