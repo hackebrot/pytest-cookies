@@ -46,14 +46,14 @@ class Cookies(object):
         self._counter += 1
         return output_dir
 
-    def bake(self, extra_context=None):
+    def bake(self, extra_context=None, template=None):
         exception = None
         exit_code = 0
         project_dir = None
 
         try:
             project_dir = cookiecutter(
-                self._template,
+                template or self._template,
                 no_input=True,
                 extra_context=extra_context,
                 output_dir=str(self._new_output_dir()),
