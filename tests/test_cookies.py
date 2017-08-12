@@ -59,7 +59,7 @@ def test_cookies_bake_with_template_kwarg(testdir, cookiecutter_template):
         def test_bake_project(cookies):
             result = cookies.bake(
                 extra_context={'repo_name': 'helloworld'},
-                template='%s',
+                template=r'%s',
             )
 
             assert result.exit_code == 0
@@ -90,7 +90,7 @@ def test_cookies_bake_template_kwarg_overrides_cli_option(
         def test_bake_project(cookies):
             result = cookies.bake(
                 extra_context={'repo_name': 'helloworld'},
-                template='%s',
+                template=r'%s',
             )
 
             assert result.exit_code == 0
