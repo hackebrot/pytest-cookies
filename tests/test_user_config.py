@@ -6,6 +6,8 @@ def test_config(testdir):
 
     # create a temporary pytest test module
     testdir.makepyfile("""
+        # -*- coding: utf-8 -*-
+
         import poyo
 
 

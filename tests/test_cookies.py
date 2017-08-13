@@ -2,12 +2,16 @@
 
 import json
 
+import pytest
+
 
 def test_cookies_fixture(testdir):
     """Make sure that pytest accepts the `cookies` fixture."""
 
     # create a temporary pytest test module
     testdir.makepyfile("""
+        # -*- coding: utf-8 -*-
+
         def test_valid_fixture(cookies):
             assert hasattr(cookies, 'bake')
             assert callable(cookies.bake)
@@ -25,15 +29,13 @@ def test_cookies_fixture(testdir):
     assert result.ret == 0
 
 
-def test_cookies_bake(testdir):
-    """Programmatically create a **Cookiecutter** template and use `bake` to
-    create a project from it.
-    """
-    template = testdir.tmpdir.ensure('cookiecutter-template', dir=True)
+@pytest.fixture
+def cookiecutter_template(tmpdir):
+    template = tmpdir.ensure('cookiecutter-template', dir=True)
 
     template_config = {
         'repo_name': 'foobar',
-        'short_description': 'Test Project'
+        'short_description': 'Test Project',
     }
     template.join('cookiecutter.json').write(json.dumps(template_config))
 
@@ -46,7 +48,75 @@ def test_cookies_bake(testdir):
     repo = template.ensure('{{cookiecutter.repo_name}}', dir=True)
     repo.join('README.rst').write(template_readme)
 
+    return template
+
+
+def test_cookies_bake_with_template_kwarg(testdir, cookiecutter_template):
+    """bake accepts a template kwarg."""
     testdir.makepyfile("""
+        # -*- coding: utf-8 -*-
+
+        def test_bake_project(cookies):
+            result = cookies.bake(
+                extra_context={'repo_name': 'helloworld'},
+                template=r'%s',
+            )
+
+            assert result.exit_code == 0
+            assert result.exception is None
+            assert result.project.basename == 'helloworld'
+            assert result.project.isdir()
+
+            assert str(result) == '<Result {}>'.format(result.project)
+    """ % cookiecutter_template)
+
+    # run pytest without the template cli arg
+    result = testdir.runpytest('-v')
+
+    result.stdout.fnmatch_lines([
+        '*::test_bake_project PASSED',
+    ])
+
+
+def test_cookies_bake_template_kwarg_overrides_cli_option(
+    testdir,
+    cookiecutter_template,
+):
+    """bake template kwarg overrides cli option."""
+
+    testdir.makepyfile("""
+        # -*- coding: utf-8 -*-
+
+        def test_bake_project(cookies):
+            result = cookies.bake(
+                extra_context={'repo_name': 'helloworld'},
+                template=r'%s',
+            )
+
+            assert result.exit_code == 0
+            assert result.exception is None
+            assert result.project.basename == 'helloworld'
+            assert result.project.isdir()
+
+            assert str(result) == '<Result {}>'.format(result.project)
+    """ % cookiecutter_template)
+
+    # run pytest with a bogus template name
+    # it should use template directory passed to `cookies.bake`
+    result = testdir.runpytest('-v', '--template=foobar')
+
+    result.stdout.fnmatch_lines([
+        '*::test_bake_project PASSED',
+    ])
+
+
+def test_cookies_bake(testdir, cookiecutter_template):
+    """Programmatically create a **Cookiecutter** template and use `bake` to
+    create a project from it.
+    """
+    testdir.makepyfile("""
+        # -*- coding: utf-8 -*-
+
         def test_bake_project(cookies):
             result = cookies.bake(extra_context={'repo_name': 'helloworld'})
 
@@ -56,7 +126,26 @@ def test_cookies_bake(testdir):
             assert result.project.isdir()
 
             assert str(result) == '<Result {}>'.format(result.project)
+    """)
 
+    result = testdir.runpytest(
+        '-v',
+        '--template={}'.format(cookiecutter_template)
+    )
+
+    result.stdout.fnmatch_lines([
+        '*::test_bake_project PASSED',
+    ])
+
+
+def test_cookies_bake_should_create_new_output_directories(
+    testdir, cookiecutter_template
+):
+    """Programmatically create a **Cookiecutter** template and use `bake` to
+    create a project from it.
+    """
+    testdir.makepyfile("""
+        # -*- coding: utf-8 -*-
 
         def test_bake_should_create_new_output(cookies):
             first_result = cookies.bake()
@@ -68,12 +157,12 @@ def test_cookies_bake(testdir):
             assert second_result.project.dirname.endswith('bake01')
     """)
 
-    # run pytest with the following cmd args
-    result = testdir.runpytest('-v', '--template={}'.format(template))
+    result = testdir.runpytest(
+        '-v',
+        '--template={}'.format(cookiecutter_template)
+    )
 
-    # fnmatch_lines does an assertion internally
     result.stdout.fnmatch_lines([
-        '*::test_bake_project PASSED',
         '*::test_bake_should_create_new_output PASSED',
     ])
 
@@ -95,6 +184,8 @@ def test_cookies_bake_should_handle_exception(testdir):
     template.ensure('cookiecutter.repo_name', dir=True)
 
     testdir.makepyfile("""
+        # -*- coding: utf-8 -*-
+
         def test_bake_should_fail(cookies):
             result = cookies.bake()
 
@@ -103,10 +194,8 @@ def test_cookies_bake_should_handle_exception(testdir):
             assert result.project is None
     """)
 
-    # run pytest with the following cmd args
     result = testdir.runpytest('-v', '--template={}'.format(template))
 
-    # fnmatch_lines does an assertion internally
     result.stdout.fnmatch_lines([
         '*::test_bake_should_fail PASSED',
     ])
