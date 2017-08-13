@@ -23,6 +23,31 @@ Installation
 
 It will automatically install `pytest`_ along with `cookiecutter`_.
 
+Features
+--------
+
+``cookies.bake()`` returns a result instance with a bunch of fields that hold
+useful information:
+
+* ``exit_code``: is the exit code of cookiecutter, ``0`` means successful
+  termination
+* ``exception``: is the exception that happened (if one did, ``None``
+  otherwise)
+* ``project``: a `py.path.local`_ object pointing to the rendered project
+
+The returned ``LocalPath`` instance provides you with a powerful interface to
+filesystem related information, that comes in handy for validating the
+generated project layout and file contents:
+
+.. code-block:: python
+
+    def test_readme(cookies):
+        result = cookies.bake()
+
+        readme_file = result.project.join('README.rst')
+        readme_lines = readme_file.readlines(cr=False)
+        assert readme_lines == ['helloworld', '==========']
+
 Usage
 -----
 
@@ -86,31 +111,6 @@ To customize the `cookiecutter`_ template directory in a test,
         assert result.exception is None
         assert result.project.basename == 'example-project'
         assert result.project.isdir()
-
-Features
---------
-
-``cookies.bake()`` returns a result instance with a bunch of fields that hold
-useful information:
-
-* ``exit_code``: is the exit code of cookiecutter, ``0`` means successful
-  termination
-* ``exception``: is the exception that happened (if one did, ``None``
-  otherwise)
-* ``project``: a `py.path.local`_ object pointing to the rendered project
-
-The returned ``LocalPath`` instance provides you with a powerful interface to
-filesystem related information, that comes in handy for validating the
-generated project layout and file contents:
-
-.. code-block:: python
-
-    def test_readme(cookies):
-        result = cookies.bake()
-
-        readme_file = result.project.join('README.rst')
-        readme_lines = readme_file.readlines(cr=False)
-        assert readme_lines == ['helloworld', '==========']
 
 Issues
 ------
