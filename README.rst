@@ -81,12 +81,16 @@ official cookiecutter documentation.
 Specify template directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default, ``cookies.bake`` looks for a `cookiecutter`_ template in the current
-directory.  This can be overridden on the command line by passing a
-``--template`` parameter to `pytest`_.
+By default, ``cookies.bake`` looks for a `cookiecutter`_ template in the
+current directory. This can be overridden on the command line by passing a
+``--template`` parameter to `pytest`_:
 
-To customise the `cookiecutter`_ template directory in a test, ``cookies.bake()``
-can also accept an optional ``template`` parameter:
+.. code-block::
+
+    $ pytest --template TEMPLATE
+
+To customize the `cookiecutter`_ template directory in a test,
+``cookies.bake()`` can also accept an optional ``template`` parameter:
 
 .. code-block:: python
 
@@ -111,16 +115,18 @@ can also accept an optional ``template`` parameter:
 Features
 --------
 
-``cookies.bake()`` returns a result instance with a bunch of fields that
-hold useful information:
+``cookies.bake()`` returns a result instance with a bunch of fields that hold
+useful information:
 
-* ``exit_code``: is the exit code of cookiecutter, ``0`` means successful termination
-* ``exception``: is the exception that happened (if one did, ``None`` otherwise)
+* ``exit_code``: is the exit code of cookiecutter, ``0`` means successful
+  termination
+* ``exception``: is the exception that happened (if one did, ``None``
+  otherwise)
 * ``project``: a `py.path.local`_ object pointing to the rendered project
 
-The returned ``LocalPath`` instance provides you with a powerful interface
-to filesystem related information, that comes in handy for validating the generated
-project layout and file contents:
+The returned ``LocalPath`` instance provides you with a powerful interface to
+filesystem related information, that comes in handy for validating the
+generated project layout and file contents:
 
 .. code-block:: python
 
@@ -134,7 +140,8 @@ project layout and file contents:
 Issues
 ------
 
-If you encounter any problems, please `file an issue`_ along with a detailed description.
+If you encounter any problems, please `file an issue`_ along with a detailed
+description.
 
 Contributing
 ------------
@@ -145,13 +152,15 @@ all of the tests are green before you submit a pull request.
 Code of Conduct
 ---------------
 
-Everyone interacting in the Pytest-Cookies project's codebases, issue trackers, chat
-rooms, and mailing lists is expected to follow the `PyPA Code of Conduct`_.
+Everyone interacting in the **pytest-cookies** project's codebases, issue
+trackers, chat rooms, and mailing lists is expected to follow the `PyPA Code of
+Conduct`_.
 
 License
 -------
 
-Distributed under the terms of the `MIT`_ license, Pytest-Cookies is free and open source software.
+Distributed under the terms of the `MIT`_ license, Pytest-Cookies is free and
+open source software.
 
 .. image:: https://opensource.org/trademarks/osi-certified/web/osi-certified-120x100.png
    :align: left
