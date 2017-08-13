@@ -55,6 +55,9 @@ It will automatically install `pytest`_ along with `cookiecutter`_.
 Usage
 -----
 
+Generate a new project
+~~~~~~~~~~~~~~~~~~~~~~
+
 The ``cookies.bake()`` method generates a new project from your template based on the
 default values specified in ``cookiecutter.json``:
 
@@ -74,6 +77,9 @@ of the template context, allowing you to test arbitrary user input data.
 
 Please see the `Injecting Extra Context`_ section of the
 official cookiecutter documentation.
+
+Specify template directory
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 By default, ``cookies.bake`` looks for a `cookiecutter`_ template in the current
 directory.  This can be overridden on the command line by passing a
