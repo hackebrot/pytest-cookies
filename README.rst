@@ -3,34 +3,6 @@ Pytest-Cookies
 
 |gitter| |pypi| |pyversions| |license| |rtfd| |travis-ci| |appveyor|
 
-.. |gitter| image:: https://badges.gitter.im/Join%20Chat.svg
-   :alt: Join the chat at https://gitter.im/hackebrot/pytest-cookies
-   :target: https://gitter.im/hackebrot/pytest-cookies?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
-
-.. |pypi| image:: https://img.shields.io/pypi/v/pytest-cookies.svg
-   :target: https://pypi.python.org/pypi/pytest-cookies
-   :alt: PyPI Package
-
-.. |pyversions| image:: https://img.shields.io/pypi/pyversions/pytest-cookies.svg
-   :target: https://pypi.python.org/pypi/pytest-cookies/
-   :alt: PyPI Python Versions
-
-.. |license| image:: https://img.shields.io/pypi/l/pytest-cookies.svg
-   :target: https://pypi.python.org/pypi/pytest-cookies
-   :alt: PyPI Package License
-
-.. |rtfd| image:: https://readthedocs.org/projects/pytest-cookies/badge/?version=latest
-    :target: http://pytest-cookies.readthedocs.org/en/latest/?badge=latest
-    :alt: Documentation Status
-
-.. |travis-ci| image:: https://travis-ci.org/hackebrot/pytest-cookies.svg?branch=master
-    :target: https://travis-ci.org/hackebrot/pytest-cookies
-    :alt: See Build Status on Travis CI
-
-.. |appveyor| image:: https://ci.appveyor.com/api/projects/status/github/hackebrot/pytest-cookies?branch=master
-    :target: https://ci.appveyor.com/project/hackebrot/pytest-cookies/branch/master
-    :alt: See Build Status on AppVeyor
-
 `pytest`_ is a mature full-featured Python testing tool that provides easy,
 no boilerplate testing. Its hook-based customization system supports integration
 of external plugins such as **pytest-cookies**.
@@ -184,3 +156,32 @@ open source software.
 .. _`Injecting Extra Context`: http://cookiecutter.readthedocs.io/en/latest/advanced/injecting_content.html
 .. _`py.path.local`: http://py.readthedocs.io/en/latest/path.html#py._path.local.LocalPath
 .. _`PyPA Code of Conduct`: https://www.pypa.io/en/latest/code-of-conduct/
+
+.. |gitter| image:: https://badges.gitter.im/Join%20Chat.svg
+   :alt: Join the chat at https://gitter.im/hackebrot/pytest-cookies
+   :target: https://gitter.im/hackebrot/pytest-cookies?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+
+.. |pypi| image:: https://img.shields.io/pypi/v/pytest-cookies.svg
+   :target: https://pypi.python.org/pypi/pytest-cookies
+   :alt: PyPI Package
+
+.. |pyversions| image:: https://img.shields.io/pypi/pyversions/pytest-cookies.svg
+   :target: https://pypi.python.org/pypi/pytest-cookies/
+   :alt: PyPI Python Versions
+
+.. |license| image:: https://img.shields.io/pypi/l/pytest-cookies.svg
+   :target: https://pypi.python.org/pypi/pytest-cookies
+   :alt: PyPI Package License
+
+.. |rtfd| image:: https://readthedocs.org/projects/pytest-cookies/badge/?version=latest
+    :target: http://pytest-cookies.readthedocs.org/en/latest/?badge=latest
+    :alt: Documentation Status
+
+.. |travis-ci| image:: https://travis-ci.org/hackebrot/pytest-cookies.svg?branch=master
+    :target: https://travis-ci.org/hackebrot/pytest-cookies
+    :alt: See Build Status on Travis CI
+
+.. |appveyor| image:: https://ci.appveyor.com/api/projects/status/github/hackebrot/pytest-cookies?branch=master
+    :target: https://ci.appveyor.com/project/hackebrot/pytest-cookies/branch/master
+    :alt: See Build Status on AppVeyor
+
