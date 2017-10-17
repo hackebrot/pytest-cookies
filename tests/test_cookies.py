@@ -192,6 +192,7 @@ def test_cookies_bake_should_handle_exception(testdir):
             assert result.exit_code == -1
             assert result.exception is not None
             assert result.project is None
+            assert result.trace_back is not None
     """)
 
     result = testdir.runpytest('-v', '--template={}'.format(template))

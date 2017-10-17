@@ -34,6 +34,8 @@ useful information:
 * ``exception``: is the exception that happened (if one did, ``None``
   otherwise)
 * ``project``: a `py.path.local`_ object pointing to the rendered project
+*  ``trace_back`` : a trace back object associated with the ``exception``
+  (if an exception happend, ``None`` otherwise)
 
 The returned ``LocalPath`` instance provides you with a powerful interface to
 filesystem related information, that comes in handy for validating the
@@ -61,6 +63,9 @@ default values specified in ``cookiecutter.json``:
 
     def test_bake_project(cookies):
         result = cookies.bake(extra_context={'repo_name': 'helloworld'})
+
+        if result.exception:
+           print(result.trace_back_stack)
 
         assert result.exit_code == 0
         assert result.exception is None
