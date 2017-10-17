@@ -45,9 +45,6 @@ generated project layout and file contents:
     def test_readme(cookies):
         result = cookies.bake()
 
-      if result.trace_back:
-        print(result.trace_back_stack)
-
         readme_file = result.project.join('README.rst')
         readme_lines = readme_file.readlines(cr=False)
         assert readme_lines == ['helloworld', '==========']
