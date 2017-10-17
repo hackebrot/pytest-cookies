@@ -17,7 +17,8 @@ replay_dir: "{replay_dir}"
 class Result(object):
     """Holds the captured result of the cookiecutter project generation."""
 
-    def __init__(self, exception=None, exit_code=0, project_dir=None, trace_back=None):
+    def __init__(self, exception=None, exit_code=0, project_dir=None,
+                 trace_back=None):
         self.exception = exception
         self.exit_code = exit_code
         self._project_dir = project_dir
