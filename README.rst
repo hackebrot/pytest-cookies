@@ -34,8 +34,7 @@ useful information:
 * ``exception``: is the exception that happened (if one did, ``None``
   otherwise)
 * ``project``: a `py.path.local`_ object pointing to the rendered project
-*  ``trace_back`` : a trace back object associated with the ``exception``
-  (if an exception happend, ``None`` otherwise)
+*  ``trace_back`` : a trace back object associated with the ``exception`` (if an exception happend, ``None`` otherwise)
 
 The returned ``LocalPath`` instance provides you with a powerful interface to
 filesystem related information, that comes in handy for validating the
