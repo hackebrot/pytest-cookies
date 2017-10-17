@@ -24,6 +24,7 @@ def test_bake_project(cookies):
 
     assert result.exit_code == 0
     assert result.exception is None
+    assert result.trace_back is None
     assert result.project.basename == 'helloworld'
     assert result.project.isdir()
 ```
