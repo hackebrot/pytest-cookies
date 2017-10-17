@@ -23,6 +23,10 @@ Installation
 
 It will automatically install `pytest`_ along with `cookiecutter`_.
 
+.. note:: This is a fork that adds an exeception trace back to the results
+          of a cookies.bake() call. I needed this to help me debug.
+
+
 Features
 --------
 
