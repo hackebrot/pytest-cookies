@@ -167,6 +167,71 @@ def test_cookies_bake_should_create_new_output_directories(
     ])
 
 
+def test_cookies_fixture_removes_output_directories(
+    testdir, cookiecutter_template
+):
+    """Programmatically create a **Cookiecutter** template and use `bake` to
+    create a project from it.
+    """
+    testdir.makepyfile("""
+        # -*- coding: utf-8 -*-
+        import os
+
+        def test_to_create_result(cookies):
+            global result_dirname
+            result = cookies.bake()
+            result_dirname = result.project.dirname
+            assert result.exception is None
+
+        def test_previously_generated_directory_is_removed(cookies):
+            exists = os.path.isdir(result_dirname)
+            assert exists is False
+    """)
+
+    result = testdir.runpytest(
+        '-v',
+        '--template={}'.format(cookiecutter_template)
+    )
+
+    result.stdout.fnmatch_lines([
+        '*::test_to_create_result PASSED',
+        '*::test_previously_generated_directory_is_removed PASSED',
+    ])
+
+
+def test_cookies_fixture_doesnt_remove_output_directories(
+    testdir, cookiecutter_template
+):
+    """Programmatically create a **Cookiecutter** template and use `bake` to
+    create a project from it.
+    """
+    testdir.makepyfile("""
+        # -*- coding: utf-8 -*-
+        import os
+
+        def test_to_create_result(cookies):
+            global result_dirname
+            result = cookies.bake()
+            result_dirname = result.project.dirname
+            assert result.exception is None
+
+        def test_previously_generated_directory_is_not_removed(cookies):
+            exists = os.path.isdir(result_dirname)
+            assert exists is True
+    """)
+
+    result = testdir.runpytest(
+        '-v',
+        '--template={}'.format(cookiecutter_template),
+        '--keep-cookies-directories'
+    )
+
+    result.stdout.fnmatch_lines([
+        '*::test_to_create_result PASSED',
+        '*::test_previously_generated_directory_is_not_removed PASSED',
+    ])
+
+
 def test_cookies_bake_should_handle_exception(testdir):
     """Programmatically create a **Cookiecutter** template and make sure that
     cookies.bake() handles exceptions that happen during project generation.
