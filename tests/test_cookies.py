@@ -22,7 +22,7 @@ def test_cookies_fixture(testdir):
 
     # fnmatch_lines does an assertion internally
     result.stdout.fnmatch_lines([
-        '*::test_valid_fixture PASSED',
+        '*::test_valid_fixture PASSED*',
     ])
 
     # make sure that that we get a '0' exit code for the testsuite
@@ -74,7 +74,7 @@ def test_cookies_bake_with_template_kwarg(testdir, cookiecutter_template):
     result = testdir.runpytest('-v')
 
     result.stdout.fnmatch_lines([
-        '*::test_bake_project PASSED',
+        '*::test_bake_project PASSED*',
     ])
 
 
@@ -106,7 +106,7 @@ def test_cookies_bake_template_kwarg_overrides_cli_option(
     result = testdir.runpytest('-v', '--template=foobar')
 
     result.stdout.fnmatch_lines([
-        '*::test_bake_project PASSED',
+        '*::test_bake_project PASSED*',
     ])
 
 
@@ -134,7 +134,7 @@ def test_cookies_bake(testdir, cookiecutter_template):
     )
 
     result.stdout.fnmatch_lines([
-        '*::test_bake_project PASSED',
+        '*::test_bake_project PASSED*',
     ])
 
 
@@ -163,7 +163,7 @@ def test_cookies_bake_should_create_new_output_directories(
     )
 
     result.stdout.fnmatch_lines([
-        '*::test_bake_should_create_new_output PASSED',
+        '*::test_bake_should_create_new_output PASSED*',
     ])
 
 
@@ -197,5 +197,5 @@ def test_cookies_bake_should_handle_exception(testdir):
     result = testdir.runpytest('-v', '--template={}'.format(template))
 
     result.stdout.fnmatch_lines([
-        '*::test_bake_should_fail PASSED',
+        '*::test_bake_should_fail PASSED*',
     ])

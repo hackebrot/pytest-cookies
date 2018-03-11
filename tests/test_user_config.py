@@ -40,8 +40,8 @@ def test_config(testdir):
 
     # fnmatch_lines does an assertion internally
     result.stdout.fnmatch_lines([
-        '*::test_user_dir PASSED',
-        '*::test_valid_cookiecutter_config PASSED',
+        '*::test_user_dir PASSED*',
+        '*::test_valid_cookiecutter_config PASSED*',
     ])
 
     # make sure that that we get a '0' exit code for the testsuite
