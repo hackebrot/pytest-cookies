@@ -194,8 +194,8 @@ def test_cookies_fixture_removes_output_directories(
     )
 
     result.stdout.fnmatch_lines([
-        '*::test_to_create_result PASSED',
-        '*::test_previously_generated_directory_is_removed PASSED',
+        '*::test_to_create_result PASSED*',
+        '*::test_previously_generated_directory_is_removed PASSED*',
     ])
 
 
@@ -227,8 +227,8 @@ def test_cookies_fixture_doesnt_remove_output_directories(
     )
 
     result.stdout.fnmatch_lines([
-        '*::test_to_create_result PASSED',
-        '*::test_previously_generated_directory_is_not_removed PASSED',
+        '*::test_to_create_result PASSED*',
+        '*::test_previously_generated_directory_is_not_removed PASSED*',
     ])
 
 
