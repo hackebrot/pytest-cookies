@@ -116,13 +116,13 @@ Keep Output Directories for Debugging
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 By default, the ``cookies`` fixture will remove all baked projects.
-However, you can pass the flag ``keep-cookies-directories`` if you'd like
+However, you can pass the flag ``keep-baked-projects`` if you'd like
 to keep them (`it won't clutter`_, pytest will remove entries older than 3
 temporary directories):
 
 .. code-block::
 
-    $ pytest --keep-cookies-directories
+    $ pytest --keep-baked-projects
 
 Issues
 ------

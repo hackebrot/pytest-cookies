@@ -223,7 +223,7 @@ def test_cookies_fixture_doesnt_remove_output_directories(
     result = testdir.runpytest(
         '-v',
         '--template={}'.format(cookiecutter_template),
-        '--keep-cookies-directories'
+        '--keep-baked-projects'
     )
 
     result.stdout.fnmatch_lines([
