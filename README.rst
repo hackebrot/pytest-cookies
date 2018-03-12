@@ -46,7 +46,11 @@ generated project layout and file contents:
 
         readme_file = result.project.join('README.rst')
         readme_lines = readme_file.readlines(cr=False)
-        assert readme_lines == ['helloworld', '==========']
+
+        assert readme_lines == [
+            'helloworld',
+            '==========',
+        ]
 
 Usage
 -----
