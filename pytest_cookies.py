@@ -108,7 +108,9 @@ def cookies(request, tmpdir, _cookiecutter_config_file):
 
     yield Cookies(template_dir, output_factory, _cookiecutter_config_file)
 
-    output_dir.remove()
+    # Add option to keep generated output directories.
+    if not request.config.option.keep_baked_projects:
+        output_dir.remove()
 
 
 def pytest_addoption(parser):
@@ -120,4 +122,12 @@ def pytest_addoption(parser):
         dest='template',
         help='specify the template to be rendered',
         type='string',
+    )
+
+    group.addoption(
+        '--keep-baked-projects',
+        action='store_true',
+        default=False,
+        dest='keep_baked_projects',
+        help="Keep projects directories generated with 'cookies.bake()'."
     )

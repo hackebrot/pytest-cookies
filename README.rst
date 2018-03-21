@@ -116,6 +116,18 @@ To customize the `cookiecutter`_ template directory in a test,
         assert result.project.basename == 'example-project'
         assert result.project.isdir()
 
+Keep Output Directories for Debugging
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By default, the ``cookies`` fixture will remove all baked projects.
+However, you can pass the flag ``keep-baked-projects`` if you'd like
+to keep them (`it won't clutter`_, pytest will remove entries older than 3
+temporary directories):
+
+.. code-block::
+
+    $ pytest --keep-baked-projects
+
 Issues
 ------
 
@@ -146,7 +158,7 @@ open source software.
    :alt: OSI certified
    :target: https://opensource.org/
 
-
+.. _`it won't clutter`: https://docs.pytest.org/en/latest/tmpdir.html#the-default-base-temporary-directory
 .. _`cookiecutter`: https://github.com/audreyr/cookiecutter
 .. _`@hackebrot`: https://github.com/hackebrot
 .. _`MIT`: http://opensource.org/licenses/MIT
