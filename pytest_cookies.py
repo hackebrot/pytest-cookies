@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
+import sys
+import traceback
 
 import py
 import pytest
+
 
 from cookiecutter.main import cookiecutter
 
@@ -14,16 +17,25 @@ replay_dir: "{replay_dir}"
 class Result(object):
     """Holds the captured result of the cookiecutter project generation."""
 
-    def __init__(self, exception=None, exit_code=0, project_dir=None):
+    def __init__(self, exception=None, exit_code=0, project_dir=None,
+                 trace_back=None):
         self.exception = exception
         self.exit_code = exit_code
         self._project_dir = project_dir
+        self.trace_back = trace_back
 
     @property
     def project(self):
         if self.exception is None:
             return py.path.local(self._project_dir)
         return None
+
+    @property
+    def trace_back_stack(self):
+        if self.trace_back:
+            return ''.join(traceback.format_tb(self.trace_back))
+        else:
+            return None
 
     def __repr__(self):
         return '<Result {}>'.format(
@@ -50,6 +62,7 @@ class Cookies(object):
         exception = None
         exit_code = 0
         project_dir = None
+        tb = None
 
         if template is None:
             template = self._default_template
@@ -66,11 +79,13 @@ class Cookies(object):
             if e.code != 0:
                 exception = e
             exit_code = e.code
+            tb = sys.exc_info()[2]
         except Exception as e:
             exception = e
             exit_code = -1
+            tb = sys.exc_info()[2]
 
-        return Result(exception, exit_code, project_dir)
+        return Result(exception, exit_code, project_dir, tb)
 
 
 @pytest.fixture(scope='session')
