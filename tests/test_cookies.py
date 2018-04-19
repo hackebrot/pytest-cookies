@@ -138,6 +138,81 @@ def test_cookies_bake(testdir, cookiecutter_template):
     ])
 
 
+def test_cookies_bake_result_context(testdir, cookiecutter_template):
+    """Programmatically create a **Cookiecutter** template and use `bake` to
+    create a project from it.
+
+    Check that the result holds the rendered context.
+    """
+
+    testdir.makepyfile("""
+        # -*- coding: utf-8 -*-
+
+        def test_bake_project(cookies):
+            result = cookies.bake(extra_context={
+                'repo_name': 'cookies',
+                'short_description': '{{cookiecutter.repo_name}} is awesome',
+            })
+
+            assert result.exit_code == 0
+            assert result.exception is None
+            assert result.project.basename == 'cookies'
+            assert result.project.isdir()
+
+            assert result.context == {
+                'repo_name': 'cookies',
+                'short_description': 'cookies is awesome',
+            }
+
+            assert str(result) == '<Result {}>'.format(result.project)
+    """)
+
+    result = testdir.runpytest(
+        '-v',
+        '--template={}'.format(cookiecutter_template)
+    )
+
+    result.stdout.fnmatch_lines([
+        '*::test_bake_project PASSED*',
+    ])
+
+
+def test_cookies_bake_result_context_exception(testdir, cookiecutter_template):
+    """Programmatically create a **Cookiecutter** template and use `bake` to
+    create a project from it.
+
+    Check that exceptions resulting from rendering the context are stored on
+    result and that the rendered context is not set.
+    """
+
+    testdir.makepyfile("""
+        # -*- coding: utf-8 -*-
+
+        def test_bake_project(cookies):
+            result = cookies.bake(extra_context={
+                'repo_name': 'cookies',
+                'short_description': '{{cookiecutter.nope}}',
+            })
+
+            assert result.exit_code == -1
+            assert result.exception is not None
+            assert result.project is None
+
+            assert result.context is None
+
+            assert str(result) == '<Result {!r}>'.format(result.exception)
+    """)
+
+    result = testdir.runpytest(
+        '-v',
+        '--template={}'.format(cookiecutter_template)
+    )
+
+    result.stdout.fnmatch_lines([
+        '*::test_bake_project PASSED*',
+    ])
+
+
 def test_cookies_bake_should_create_new_output_directories(
     testdir, cookiecutter_template
 ):
