@@ -30,6 +30,7 @@ class Result(object):
             return '<Result {!r}>'.format(self.exception)
         return '<Result {}>'.format(self.project)
 
+
 class Cookies(object):
     """Class to provide convenient access to the cookiecutter API."""
 
