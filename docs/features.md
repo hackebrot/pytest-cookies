@@ -19,4 +19,5 @@ def test_readme(cookies):
     readme_lines = readme_file.readlines(cr=False)
     assert readme_lines == ['helloworld', '==========']
 ```
-  [py.path.local]: http://pylib.readthedocs.org/en/latest/path.html#py._path.local.LocalPath
+
+[py.path.local]: https://py.readthedocs.io/en/latest/path.html#py._path.local.LocalPath
