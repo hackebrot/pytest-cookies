@@ -26,9 +26,9 @@ class Result(object):
         return None
 
     def __repr__(self):
-        return '<Result {}>'.format(
-            self.exception and repr(self.exception) or self.project
-        )
+        if self.exception:
+            return '<Result {!r}>'.format(self.exception)
+        return '<Result {}>'.format(self.project)
 
 
 class Cookies(object):
