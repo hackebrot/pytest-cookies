@@ -148,11 +148,13 @@ def test_cookies_bake_result_context(testdir, cookiecutter_template):
     testdir.makepyfile("""
         # -*- coding: utf-8 -*-
 
+        import collections
+
         def test_bake_project(cookies):
-            result = cookies.bake(extra_context={
-                'repo_name': 'cookies',
-                'short_description': '{{cookiecutter.repo_name}} is awesome',
-            })
+            result = cookies.bake(extra_context=collections.OrderedDict([
+                ('repo_name', 'cookies'),
+                ('short_description', '{{cookiecutter.repo_name}} is awesome'),
+            ]))
 
             assert result.exit_code == 0
             assert result.exception is None
@@ -188,11 +190,13 @@ def test_cookies_bake_result_context_exception(testdir, cookiecutter_template):
     testdir.makepyfile("""
         # -*- coding: utf-8 -*-
 
+        import collections
+
         def test_bake_project(cookies):
-            result = cookies.bake(extra_context={
-                'repo_name': 'cookies',
-                'short_description': '{{cookiecutter.nope}}',
-            })
+            result = cookies.bake(extra_context=collections.OrderedDict([
+                ('repo_name', 'cookies'),
+                ('short_description', '{{cookiecutter.nope}}'),
+            ]))
 
             assert result.exit_code == -1
             assert result.exception is not None
