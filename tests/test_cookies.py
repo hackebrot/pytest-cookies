@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import json
+import collections
 
 import pytest
 
@@ -33,10 +34,10 @@ def test_cookies_fixture(testdir):
 def cookiecutter_template(tmpdir):
     template = tmpdir.ensure('cookiecutter-template', dir=True)
 
-    template_config = {
-        'repo_name': 'foobar',
-        'short_description': 'Test Project',
-    }
+    template_config = collections.OrderedDict([
+        ('repo_name', 'foobar'),
+        ('short_description', 'Test Project'),
+    ])
     template.join('cookiecutter.json').write(json.dumps(template_config))
 
     template_readme = '\n'.join([
