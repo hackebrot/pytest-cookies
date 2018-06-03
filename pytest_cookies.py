@@ -4,6 +4,8 @@ import py
 import pytest
 
 from cookiecutter.main import cookiecutter
+from cookiecutter.generate import generate_context
+from cookiecutter.prompt import prompt_for_config
 
 USER_CONFIG = u"""
 cookiecutters_dir: "{cookiecutters_dir}"
@@ -14,9 +16,16 @@ replay_dir: "{replay_dir}"
 class Result(object):
     """Holds the captured result of the cookiecutter project generation."""
 
-    def __init__(self, exception=None, exit_code=0, project_dir=None):
+    def __init__(
+        self,
+        exception=None,
+        exit_code=0,
+        project_dir=None,
+        context=None,
+    ):
         self.exception = exception
         self.exit_code = exit_code
+        self.context = context
         self._project_dir = project_dir
 
     @property
@@ -28,6 +37,7 @@ class Result(object):
     def __repr__(self):
         if self.exception:
             return '<Result {!r}>'.format(self.exception)
+
         return '<Result {}>'.format(self.project)
 
 
@@ -50,17 +60,30 @@ class Cookies(object):
         exception = None
         exit_code = 0
         project_dir = None
+        context = None
 
         if template is None:
             template = self._default_template
 
+        context_file = py.path.local(template).join('cookiecutter.json')
+
         try:
+            # Render the context, so that we can store it on the Result
+            context = prompt_for_config(
+                generate_context(
+                    context_file=str(context_file),
+                    extra_context=extra_context,
+                ),
+                no_input=True,
+            )
+
+            # Run cookiecutter to generate a new project
             project_dir = cookiecutter(
                 template,
                 no_input=True,
                 extra_context=extra_context,
                 output_dir=str(self._new_output_dir()),
-                config_file=str(self._config_file)
+                config_file=str(self._config_file),
             )
         except SystemExit as e:
             if e.code != 0:
@@ -70,7 +93,12 @@ class Cookies(object):
             exception = e
             exit_code = -1
 
-        return Result(exception, exit_code, project_dir)
+        return Result(
+            exception=exception,
+            exit_code=exit_code,
+            project_dir=project_dir,
+            context=context,
+        )
 
 
 @pytest.fixture(scope='session')
