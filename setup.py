@@ -23,6 +23,7 @@ setup(
     description='A Pytest plugin for your Cookiecutter templates',
     long_description=read('README.rst'),
     py_modules=['pytest_cookies'],
+    python_requires=">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*",
     install_requires=[
         'pytest>=3.3.0',
         'cookiecutter>=1.4.0'
