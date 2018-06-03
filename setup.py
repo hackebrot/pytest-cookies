@@ -24,7 +24,7 @@ setup(
     long_description=read('README.rst'),
     py_modules=['pytest_cookies'],
     install_requires=[
-        'pytest>=2.8.1',
+        'pytest>=3.3.0',
         'cookiecutter>=1.4.0'
     ],
     classifiers=[
