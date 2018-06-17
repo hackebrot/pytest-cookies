@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import json
-import collections
-
 import pytest
 
 
@@ -28,28 +26,6 @@ def test_cookies_fixture(testdir):
 
     # make sure that that we get a '0' exit code for the testsuite
     assert result.ret == 0
-
-
-@pytest.fixture
-def cookiecutter_template(tmpdir):
-    template = tmpdir.ensure('cookiecutter-template', dir=True)
-
-    template_config = collections.OrderedDict([
-        ('repo_name', 'foobar'),
-        ('short_description', 'Test Project'),
-    ])
-    template.join('cookiecutter.json').write(json.dumps(template_config))
-
-    template_readme = '\n'.join([
-        '{{cookiecutter.repo_name}}',
-        '{% for _ in cookiecutter.repo_name %}={% endfor %}',
-        '{{cookiecutter.short_description}}',
-    ])
-
-    repo = template.ensure('{{cookiecutter.repo_name}}', dir=True)
-    repo.join('README.rst').write(template_readme)
-
-    return template
 
 
 def test_cookies_bake_with_template_kwarg(testdir, cookiecutter_template):
