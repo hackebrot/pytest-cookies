@@ -344,3 +344,46 @@ def test_cookies_bake_should_handle_exception(testdir):
     result.stdout.fnmatch_lines([
         '*::test_bake_should_fail PASSED*',
     ])
+
+@pytest.mark.parametrize('choice', ['mkdocs', 'sphinx', 'none'])
+def test_cookies_bake_choices(testdir, choice):
+    """Programmatically create a **Cookiecutter** template and make sure that
+    cookies.bake() works with choice variables.
+    """
+    template = testdir.tmpdir.ensure('cookiecutter-choices', dir=True)
+    template_config = {
+        'repo_name': 'docs',
+        'docs_tool': ['mkdocs', 'sphinx', 'none'],
+    }
+    template.join('cookiecutter.json').write(json.dumps(template_config))
+
+    repo = template.ensure('{{cookiecutter.repo_name}}', dir=True)
+    repo.join('README.rst').write("docs_tool: {{cookiecutter.docs_tool}}")
+
+    testdir.makepyfile("""
+        # -*- coding: utf-8 -*-
+
+        def test_bake_project(cookies):
+            result = cookies.bake(
+                extra_context={'docs_tool': '%s'},
+                template=r'%s',
+            )
+
+            assert result.exit_code == 0
+            assert result.exception is None
+            assert result.project.basename == 'docs'
+            assert result.project.isdir()
+
+            assert result.project.join('README.rst').read() == 'docs_tool: %s'
+
+            assert str(result) == '<Result {}>'.format(result.project)
+    """ % (choice, template, choice))
+
+    # run pytest without the template cli arg
+    result = testdir.runpytest('-v')
+
+    result.stdout.fnmatch_lines([
+        '*::test_bake_project PASSED*',
+    ])
+
+    result = testdir.runpytest('-v', '--template={}'.format(template))
