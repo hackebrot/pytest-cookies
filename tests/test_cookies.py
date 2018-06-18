@@ -321,6 +321,7 @@ def test_cookies_bake_should_handle_exception(testdir):
         '*::test_bake_should_fail PASSED*',
     ])
 
+
 @pytest.mark.parametrize('choice', ['mkdocs', 'sphinx', 'none'])
 def test_cookies_bake_choices(testdir, choice):
     """Programmatically create a **Cookiecutter** template and make sure that
