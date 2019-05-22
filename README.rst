@@ -134,24 +134,20 @@ Issues
 If you encounter any problems, please `file an issue`_ along with a detailed
 description.
 
-Contributing
-------------
+Community
+---------
 
 Contributions are very welcome! Tests can be run with `tox`_, please make sure
 all of the tests are green before you submit a pull request.
 
-Code of Conduct
----------------
-
-Everyone interacting in the **pytest-cookies** project's codebases, issue
-trackers, chat rooms, and mailing lists is expected to follow the `PyPA Code of
-Conduct`_.
+Please note that **pytest-cookies** is released with a `Contributor Code of Conduct`_. By
+participating in this project you agree to abide by its terms.
 
 License
 -------
 
-Distributed under the terms of the `MIT`_ license, Pytest-Cookies is free and
-open source software.
+Distributed under the terms of the `MIT`_ license, **pytest-cookies** is free
+and open source software.
 
 .. image:: https://opensource.org/trademarks/osi-certified/web/osi-certified-120x100.png
    :align: left
@@ -170,7 +166,7 @@ open source software.
 .. _`PyPI`: https://pypi.python.org/pypi
 .. _`Injecting Extra Context`: http://cookiecutter.readthedocs.io/en/latest/advanced/injecting_content.html
 .. _`py.path.local`: http://py.readthedocs.io/en/latest/path.html#py._path.local.LocalPath
-.. _`PyPA Code of Conduct`: https://www.pypa.io/en/latest/code-of-conduct/
+.. _`Contributor Code of Conduct`: https://github.com/hackebrot/pytest-cookies/blob/master/CODE_OF_CONDUCT.md
 
 .. |gitter| image:: https://badges.gitter.im/Join%20Chat.svg
    :alt: Join the chat at https://gitter.im/hackebrot/pytest-cookies
