@@ -18,7 +18,7 @@ matrix:
       - python: 3.7
         env: TOXENV=py37
       - python: pypy
-        env: TOX_ENV=pypy
+        env: TOXENV=pypy
       - python: 3.7
         env: TOXENV=flake8
 
