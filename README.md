@@ -104,6 +104,9 @@ abide by its terms.
 
 # License
 
+Distributed under the terms of the [MIT license][license], **pytest-cookies**
+is free and open source software.
+
 [cookiecutter]: https://github.com/audreyr/cookiecutter
 [pytest]: https://github.com/pytest-dev/pytest
 [pip]: https://pypi.org/project/pip/
@@ -113,3 +116,4 @@ abide by its terms.
 [tox]: https://pypi.org/project/tox/
 [new-issue]: https://github.com/hackebrot/pytest-cookies/issues
 [code-of-conduct]: https://github.com/hackebrot/pytest-cookies/blob/master/CODE_OF_CONDUCT.md
+[license]: https://github.com/hackebrot/pytest-cookies/blob/master/LICENSE
