@@ -93,6 +93,15 @@ pytest --keep-baked-projects
 
 # Community
 
+Contributions are very welcome! If you encounter any problems, please [file
+an issue][new-issue] along with a detailed description. Tests can be run with
+[tox][tox]. Please make sure all of the tests are green before you submit a
+pull request.
+
+Please note that **pytest-cookies** is released with a [Contributor Code of
+Conduct][code-of-conduct]. By participating in this project you agree to
+abide by its terms.
+
 # License
 
 [cookiecutter]: https://github.com/audreyr/cookiecutter
@@ -101,3 +110,6 @@ pytest --keep-baked-projects
 [pypi]: https://pypi.org/project/pytest-cookies/
 [extra-context]: https://cookiecutter.readthedocs.io/en/latest/advanced/injecting_context.html
 [temporary-directories]: https://docs.pytest.org/en/latest/tmpdir.html#the-default-base-temporary-directory
+[tox]: https://pypi.org/project/tox/
+[new-issue]: https://github.com/hackebrot/pytest-cookies/issues
+[code-of-conduct]: https://github.com/hackebrot/pytest-cookies/blob/master/CODE_OF_CONDUCT.md
