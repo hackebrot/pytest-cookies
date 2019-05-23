@@ -42,7 +42,8 @@ This also accepts the ``extra_context`` keyword argument that will be passed
 to cookiecutter. The given dictionary will override the default values of the
 template context, effectively allowing you to test arbitrary user input data.
 
-For more information on injecting extra context, please check out the [cookiecutter documentation][extra-context].
+For more information on injecting extra context, please check out the
+[cookiecutter documentation][extra-context].
 
 ## Specify the template directory
 
