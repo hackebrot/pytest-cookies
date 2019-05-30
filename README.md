@@ -6,10 +6,9 @@ statements and regular Python comparisons. At the core of the pytest test
 framework is a powerful hook-based plugin system.
 
 **pytest-cookies** is a pytest plugin that comes with a ``cookies`` fixture
-*which is a
-wrapper for the [cookiecutter][cookiecutter] API for generating projects. It
-helps you verify that your template is working as expected and takes care of
-cleaning up after running the tests. 🍪
+which is a wrapper for the [cookiecutter][cookiecutter] API for generating
+projects. It helps you verify that your template is working as expected and
+takes care of cleaning up after running the tests. 🍪
 
 # Installation
 
@@ -38,9 +37,10 @@ def test_bake_project(cookies):
     assert result.project.isdir()
 ```
 
-This also accepts the ``extra_context`` keyword argument that will be passed
-to cookiecutter. The given dictionary will override the default values of the
-template context, effectively allowing you to test arbitrary user input data.
+The ``cookies.bake()`` method also accepts the ``extra_context`` keyword
+argument that will be passed to cookiecutter. The given dictionary will
+override the default values of the template context, effectively allowing you
+to test arbitrary user input data.
 
 For more information on injecting extra context, please check out the
 [cookiecutter documentation][extra-context].
