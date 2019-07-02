@@ -25,7 +25,11 @@ setup(
     long_description_content_type="text/markdown",
     py_modules=["pytest_cookies"],
     python_requires=">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*",
-    install_requires=["pytest>=3.3.0", "cookiecutter>=1.4.0"],
+    install_requires=[
+        "arrow<0.14.0",
+        "cookiecutter>=1.4.0,<=1.6.0",
+        "pytest>=3.3.0,<5.0.0",
+    ],
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
