@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os
 import codecs
-from setuptools import setup
+import os
+import setuptools
 
 
 def read(fname):
@@ -11,7 +11,7 @@ def read(fname):
     return codecs.open(file_path, encoding="utf-8").read()
 
 
-setup(
+setuptools.setup(
     name="pytest-cookies",
     version="0.3.0",
     author="Raphael Pierzina",
@@ -23,7 +23,10 @@ setup(
     description="A Pytest plugin for your Cookiecutter templates",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
-    py_modules=["pytest_cookies"],
+    packages=setuptools.find_packages("src"),
+    package_dir={"": "src"},
+    include_package_data=True,
+    zip_safe=False,
     python_requires=">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*",
     install_requires=[
         "arrow<0.14.0",
@@ -47,6 +50,6 @@ setup(
         "Topic :: Software Development :: Testing",
         "Framework :: Pytest",
     ],
-    entry_points={"pytest11": ["cookies = pytest_cookies"]},
+    entry_points={"pytest11": ["cookies = pytest_cookies.plugin"]},
     keywords=["cookiecutter", "pytest"],
 )
