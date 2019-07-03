@@ -16,13 +16,7 @@ replay_dir: "{replay_dir}"
 class Result(object):
     """Holds the captured result of the cookiecutter project generation."""
 
-    def __init__(
-        self,
-        exception=None,
-        exit_code=0,
-        project_dir=None,
-        context=None,
-    ):
+    def __init__(self, exception=None, exit_code=0, project_dir=None, context=None):
         self.exception = exception
         self.exit_code = exit_code
         self.context = context
@@ -36,9 +30,9 @@ class Result(object):
 
     def __repr__(self):
         if self.exception:
-            return '<Result {!r}>'.format(self.exception)
+            return "<Result {!r}>".format(self.exception)
 
-        return '<Result {}>'.format(self.project)
+        return "<Result {}>".format(self.project)
 
 
 class Cookies(object):
@@ -51,7 +45,7 @@ class Cookies(object):
         self._counter = 0
 
     def _new_output_dir(self):
-        dirname = 'bake{:02d}'.format(self._counter)
+        dirname = "bake{:02d}".format(self._counter)
         output_dir = self._output_factory(dirname)
         self._counter += 1
         return output_dir
@@ -65,14 +59,13 @@ class Cookies(object):
         if template is None:
             template = self._default_template
 
-        context_file = py.path.local(template).join('cookiecutter.json')
+        context_file = py.path.local(template).join("cookiecutter.json")
 
         try:
             # Render the context, so that we can store it on the Result
             context = prompt_for_config(
                 generate_context(
-                    context_file=str(context_file),
-                    extra_context=extra_context,
+                    context_file=str(context_file), extra_context=extra_context
                 ),
                 no_input=True,
             )
@@ -101,20 +94,19 @@ class Cookies(object):
         )
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope="session")
 def _cookiecutter_config_file(tmpdir_factory):
-    user_dir = tmpdir_factory.mktemp('user_dir')
+    user_dir = tmpdir_factory.mktemp("user_dir")
 
-    cookiecutters_dir = user_dir.mkdir('cookiecutters')
-    replay_dir = user_dir.mkdir('cookiecutter_replay')
+    cookiecutters_dir = user_dir.mkdir("cookiecutters")
+    replay_dir = user_dir.mkdir("cookiecutter_replay")
 
     config_text = USER_CONFIG.format(
-        cookiecutters_dir=cookiecutters_dir,
-        replay_dir=replay_dir,
+        cookiecutters_dir=cookiecutters_dir, replay_dir=replay_dir
     )
-    config_file = user_dir.join('config')
+    config_file = user_dir.join("config")
 
-    config_file.write_text(config_text, encoding='utf8')
+    config_file.write_text(config_text, encoding="utf8")
     return config_file
 
 
@@ -131,7 +123,7 @@ def cookies(request, tmpdir, _cookiecutter_config_file):
     """
     template_dir = request.config.option.template
 
-    output_dir = tmpdir.mkdir('cookies')
+    output_dir = tmpdir.mkdir("cookies")
     output_factory = output_dir.mkdir
 
     yield Cookies(template_dir, output_factory, _cookiecutter_config_file)
@@ -142,20 +134,20 @@ def cookies(request, tmpdir, _cookiecutter_config_file):
 
 
 def pytest_addoption(parser):
-    group = parser.getgroup('cookies')
+    group = parser.getgroup("cookies")
     group.addoption(
-        '--template',
-        action='store',
-        default='.',
-        dest='template',
-        help='specify the template to be rendered',
-        type='string',
+        "--template",
+        action="store",
+        default=".",
+        dest="template",
+        help="specify the template to be rendered",
+        type="string",
     )
 
     group.addoption(
-        '--keep-baked-projects',
-        action='store_true',
+        "--keep-baked-projects",
+        action="store_true",
         default=False,
-        dest='keep_baked_projects',
-        help="Keep projects directories generated with 'cookies.bake()'."
+        dest="keep_baked_projects",
+        help="Keep projects directories generated with 'cookies.bake()'.",
     )

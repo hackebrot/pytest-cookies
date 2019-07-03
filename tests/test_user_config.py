@@ -5,7 +5,8 @@ def test_config(testdir):
     """Make sure that pytest accepts the `cookies` fixture."""
 
     # create a temporary pytest test module
-    testdir.makepyfile("""
+    testdir.makepyfile(
+        """
         # -*- coding: utf-8 -*-
 
         import poyo
@@ -33,16 +34,16 @@ def test_config(testdir):
                 'replay_dir': str(user_dir.join('cookiecutter_replay')),
             }
             assert config == expected
-    """)
+    """
+    )
 
     # run pytest with the following cmd args
-    result = testdir.runpytest('-v')
+    result = testdir.runpytest("-v")
 
     # fnmatch_lines does an assertion internally
-    result.stdout.fnmatch_lines([
-        '*::test_user_dir PASSED*',
-        '*::test_valid_cookiecutter_config PASSED*',
-    ])
+    result.stdout.fnmatch_lines(
+        ["*::test_user_dir PASSED*", "*::test_valid_cookiecutter_config PASSED*"]
+    )
 
     # make sure that that we get a '0' exit code for the testsuite
     assert result.ret == 0
