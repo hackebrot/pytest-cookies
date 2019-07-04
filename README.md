@@ -99,6 +99,12 @@ an issue][new-issue] along with a detailed description. Tests can be run with
 [tox][tox]. Please make sure all of the tests are green before you submit a
 pull request.
 
+You can also support the development of this project by volunteering to
+become a maintainer, which means you will be able to triage issues, merge
+pull-requests, and publish new releases. If you're interested, please submit
+a pull-request to add yourself to the list of [maintainers][community] and
+we'll get you started! 🍪
+
 Please note that **pytest-cookies** is released with a [Contributor Code of
 Conduct][code-of-conduct]. By participating in this project you agree to
 abide by its terms.
@@ -117,4 +123,5 @@ is free and open source software.
 [tox]: https://pypi.org/project/tox/
 [new-issue]: https://github.com/hackebrot/pytest-cookies/issues
 [code-of-conduct]: https://github.com/hackebrot/pytest-cookies/blob/master/CODE_OF_CONDUCT.md
+[community]: https://github.com/hackebrot/pytest-cookies/blob/master/COMMUNITY.md
 [license]: https://github.com/hackebrot/pytest-cookies/blob/master/LICENSE
