@@ -2,9 +2,11 @@
 
 - [@hackebrot]
 - [@michaeljoseph]
+- [@AGMETEOR]
 
 [@hackebrot]: https://github.com/hackebrot
 [@michaeljoseph]: https://github.com/michaeljoseph
+[@AGMETEOR]: https://github.com/AGMETEOR
 
 # Contributors
 
