@@ -2,9 +2,11 @@
 
 - [@hackebrot]
 - [@michaeljoseph]
+- [@phillipahereza]
 
 [@hackebrot]: https://github.com/hackebrot
 [@michaeljoseph]: https://github.com/michaeljoseph
+[@phillipahereza]: https://github.com/phillipahereza
 
 # Contributors
 
