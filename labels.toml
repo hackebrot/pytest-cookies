@@ -1,0 +1,64 @@
+[bug]
+color = "ea707a"
+description = "Bugs and problems with pytest-cookies"
+name = "bug"
+
+["code quality"]
+color = "fcc4db"
+description = "Tasks related to linting, coding style, type checks"
+name = "code quality"
+
+[dependencies]
+color = "43a2b7"
+description = "Tasks related to managing dependencies"
+name = "dependencies"
+
+[discussion]
+color = "8f7ad6"
+description = "Issues for discussing ideas for features"
+name = "discussion"
+
+["do not merge"]
+color = "e069aa"
+description = "Pull requests which must not be merged"
+name = "do not merge"
+
+[docs]
+color = "81c4e2"
+description = "Tasks to write and update documentation"
+name = "docs"
+
+[enhancement]
+color = "81c4e2"
+description = "New feature or enhancement for pytest-cookies"
+name = "enhancement"
+
+["good first issue"]
+color = "2abf88"
+description = "Tasks to pick up by newcomers to pytest-cookies"
+name = "good first issue"
+
+["help wanted"]
+color = "2abf88"
+description = "Tasks to pick up by newcomers to pytest-cookies"
+name = "help wanted"
+
+[misc]
+color = "f9d03b"
+description = "Tasks that don't fit any of the other categories"
+name = "misc"
+
+[project]
+color = "bbd1f7"
+description = "Tasks related to managing pytest-cookies"
+name = "project"
+
+[question]
+color = "8f7ad6"
+description = "Questions about pytest-cookies"
+name = "question"
+
+[release]
+color = "81c4e2"
+description = "Issues and pull-requests related to a new release"
+name = "release"
