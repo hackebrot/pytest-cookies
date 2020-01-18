@@ -35,7 +35,7 @@ setuptools.setup(
     install_requires=[
         "arrow<0.14.0",
         "cookiecutter>=1.4.0,<=1.6.0",
-        "pytest>=3.3.0,<5.0.0",
+        "pytest>=3.3.0,<5.3.3",
     ],
     classifiers=[
         "Development Status :: 4 - Beta",
