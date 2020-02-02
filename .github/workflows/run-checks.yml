@@ -7,16 +7,20 @@ jobs:
     strategy:
       matrix:
         platform: ["ubuntu-latest", "macos-latest", "windows-latest"]
-        environment: ["py36", "py37", "flake8", "mypy"]
+        environment: ["py27", "py34", "py35", "py36", "py37", "flake8"]
         
         include:
+          - environment: "py27"
+            python: "2.7"
+          - environment: "py34"
+            python: "3.4"
+          - environment: "py35"
+            python: "3.5"
           - environment: "py36"
             python: "3.6"
           - environment: "py37"
             python: "3.7"
           - environment: "flake8"
-            python: "3.7"
-          - environment: "mypy"
             python: "3.7"
 
     runs-on: ${{ matrix.platform }}
