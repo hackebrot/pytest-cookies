@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import os
+
 import py
 import pytest
 
@@ -110,7 +112,7 @@ def _cookiecutter_config_file(tmpdir_factory):
     return config_file
 
 
-@pytest.yield_fixture
+@pytest.fixture
 def cookies(request, tmpdir, _cookiecutter_config_file):
     """Yield an instance of the Cookies helper class that can be used to
     generate a project from a template.
@@ -124,6 +126,29 @@ def cookies(request, tmpdir, _cookiecutter_config_file):
     template_dir = request.config.option.template
 
     output_dir = tmpdir.mkdir("cookies")
+    output_factory = output_dir.mkdir
+
+    yield Cookies(template_dir, output_factory, _cookiecutter_config_file)
+
+    # Add option to keep generated output directories.
+    if not request.config.option.keep_baked_projects:
+        output_dir.remove()
+
+
+@pytest.fixture(scope='session')
+def cookies_session(request, tmpdir_factory, _cookiecutter_config_file):
+    """Yield an instance of the Cookies helper class that can be used to
+    generate a project from a template.
+
+    Run cookiecutter:
+        result = cookies.bake(extra_context={
+            'variable1': 'value1',
+            'variable2': 'value2',
+        })
+    """
+    template_dir = request.config.option.template
+
+    output_dir = tmpdir_factory.mktemp("cookies")
     output_factory = output_dir.mkdir
 
     yield Cookies(template_dir, output_factory, _cookiecutter_config_file)
@@ -151,3 +176,9 @@ def pytest_addoption(parser):
         dest="keep_baked_projects",
         help="Keep projects directories generated with 'cookies.bake()'.",
     )
+
+
+def pytest_configure(config):
+    # To protect ourselves from tests or fixtures changing directories, keep
+    # an absolute path to the template.
+    config.option.template = os.path.abspath(config.option.template)
