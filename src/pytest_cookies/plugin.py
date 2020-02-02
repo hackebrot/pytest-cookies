@@ -28,6 +28,7 @@ class Result(object):
     def project(self):
         if self.exception is None:
             return py.path.local(self._project_dir)
+
         return None
 
     def __repr__(self):
@@ -135,7 +136,7 @@ def cookies(request, tmpdir, _cookiecutter_config_file):
         output_dir.remove()
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope="session")
 def cookies_session(request, tmpdir_factory, _cookiecutter_config_file):
     """Yield an instance of the Cookies helper class that can be used to
     generate a project from a template.
