@@ -8,11 +8,13 @@
 
 # Contributors
 
+- [@Jyrno42]
 - [@jakirkham]
 - [@jsmedmar]
 - [@obestwalter]
 - [@pydanny]
 
+[@Jyrno42]: https://github.com/Jyrno42
 [@jakirkham]: https://github.com/jakirkham
 [@jsmedmar]: https://github.com/jsmedmar
 [@obestwalter]: https://github.com/obestwalter
