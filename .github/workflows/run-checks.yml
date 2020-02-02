@@ -5,6 +5,7 @@ on: [push, pull_request]
 jobs:
   tox:
     strategy:
+      fail-fast: false
       matrix:
         platform: ["ubuntu-latest", "macos-latest", "windows-latest"]
         environment: ["py27", "py34", "py35", "py36", "py37", "flake8"]
