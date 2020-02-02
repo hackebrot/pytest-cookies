@@ -8,11 +8,9 @@ jobs:
       fail-fast: false
       matrix:
         platform: ["ubuntu-latest", "macos-latest", "windows-latest"]
-        environment: ["py27", "py35", "py36", "py37", "flake8"]
+        environment: ["py35", "py36", "py37", "flake8"]
         
         include:
-          - environment: "py27"
-            python: "2.7"
           - environment: "py35"
             python: "3.5"
           - environment: "py36"
