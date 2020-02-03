@@ -36,7 +36,7 @@ setuptools.setup(
         "arrow<0.14.0", "cookiecutter>=1.4.0,<=1.7.0", "pytest>=3.3.0,<6.0.0"
     ],
     classifiers=[
-        "Development Status :: 4 - Beta",
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
