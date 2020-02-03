@@ -24,7 +24,7 @@ setuptools.setup(
         "Repository": "https://github.com/hackebrot/pytest-cookies",
         "Issues": "https://github.com/hackebrot/pytest-cookies/issues",
     },
-    description="The pytest plugin for your Cookiecutter templates 🍪",
+    description="The pytest plugin for your Cookiecutter templates. 🍪",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
     packages=setuptools.find_packages("src"),
