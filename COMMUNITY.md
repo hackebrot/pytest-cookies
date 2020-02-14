@@ -9,6 +9,7 @@
 # Contributors
 
 - [@jakirkham]
+- [@jamesmyatt]
 - [@jsmedmar]
 - [@jyrno42]
 - [@nedbat]
@@ -16,6 +17,7 @@
 - [@pydanny]
 
 [@jakirkham]: https://github.com/jakirkham
+[@jamesmyatt]: https://github.com/jamesmyatt
 [@jsmedmar]: https://github.com/jsmedmar
 [@jyrno42]: https://github.com/Jyrno42
 [@nedbat]: https://github.com/nedbat
