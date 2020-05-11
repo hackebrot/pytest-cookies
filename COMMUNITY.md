@@ -8,6 +8,7 @@
 
 # Contributors
 
+- [@insspb]
 - [@jakirkham]
 - [@jamesmyatt]
 - [@jsmedmar]
@@ -16,6 +17,7 @@
 - [@obestwalter]
 - [@pydanny]
 
+[@insspb]: https://github.com/insspb
 [@jakirkham]: https://github.com/jakirkham
 [@jamesmyatt]: https://github.com/jamesmyatt
 [@jsmedmar]: https://github.com/jsmedmar
