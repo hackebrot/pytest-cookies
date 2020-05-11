@@ -26,4 +26,4 @@ tests.
   [docs_badge]: https://readthedocs.org/projects/pytest-cookies/badge/?version=latest
   [documentation]: http://pytest-cookies.readthedocs.org/en/latest/?badge=latest
   [pytest]: https://github.com/pytest-dev/pytest
-  [cookiecutter]: https://github.com/audreyr/cookiecutter
+  [cookiecutter]: https://github.com/cookiecutter/cookiecutter

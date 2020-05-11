@@ -9,7 +9,7 @@ $ pip install pytest-cookies
 It will automatically install [pytest] along with [cookiecutter].
 
   [PyPI]: https://pypi.python.org/pypi
-  [cookiecutter]: https://github.com/audreyr/cookiecutter
+  [cookiecutter]: https://github.com/cookiecutter/cookiecutter
   [pip]: https://pypi.python.org/pypi/pip/
   [pytest]: https://github.com/pytest-dev/pytest
 
@@ -35,4 +35,4 @@ of the template context, allowing you to test arbitrary user input data.
 Please see the [Injecting Extra Context] section of the
 official cookiecutter documentation.
 
-  [Injecting Extra Context]: http://cookiecutter.readthedocs.org/en/latest/advanced_usage.html#injecting-extra-context
+  [Injecting Extra Context]: https://cookiecutter.readthedocs.io/en/latest/advanced/injecting_context.html#injecting-extra-context
