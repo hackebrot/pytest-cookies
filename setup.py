@@ -33,8 +33,9 @@ setuptools.setup(
     zip_safe=False,
     python_requires=">=3.6",
     install_requires=[
-        "arrow<0.14.0;python_version>'3.0' and python_version<'3.5'",
-        "cookiecutter>=1.4.0,<1.8.0", "pytest"
+        "arrow<0.14.0",
+        "cookiecutter>=1.4.0,<1.8.0",
+        "pytest>=3.3.0,<7.0.0",
     ],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
