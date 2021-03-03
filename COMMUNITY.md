@@ -16,6 +16,7 @@
 - [@nedbat]
 - [@obestwalter]
 - [@pydanny]
+- [@jonzeolla]
 
 [@insspb]: https://github.com/insspb
 [@jakirkham]: https://github.com/jakirkham
@@ -25,3 +26,4 @@
 [@nedbat]: https://github.com/nedbat
 [@obestwalter]: https://github.com/obestwalter
 [@pydanny]: https://github.com/pydanny
+[@jonzeolla]: https://github.com/jonzeolla
