@@ -2,7 +2,7 @@
 
 import os
 
-import py
+from pathlib import Path
 import pytest
 
 from cookiecutter.main import cookiecutter
@@ -27,7 +27,7 @@ class Result(object):
     @property
     def project(self):
         if self.exception is None:
-            return py.path.local(self._project_dir)
+            return Path(self._project_dir)
 
         return None
 
@@ -62,7 +62,7 @@ class Cookies(object):
         if template is None:
             template = self._default_template
 
-        context_file = py.path.local(template).join("cookiecutter.json")
+        context_file = Path(template).joinpath("cookiecutter.json")
 
         try:
             # Render the context, so that we can store it on the Result
