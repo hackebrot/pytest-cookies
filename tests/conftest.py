@@ -9,13 +9,13 @@ pytest_plugins = "pytester"
 
 
 @pytest.fixture(name="cookiecutter_template")
-def fixture_cookiecutter_template(tmpdir):
-    template = tmpdir.ensure("cookiecutter-template", dir=True)
+def fixture_cookiecutter_template(tmp_path):
+    template = tmp_path
 
     template_config = collections.OrderedDict(
         [("repo_name", "foobar"), ("short_description", "Test Project")]
     )
-    template.join("cookiecutter.json").write(json.dumps(template_config))
+    template.joinpath("cookiecutter.json").write_text(json.dumps(template_config))
 
     template_readme = "\n".join(
         [
@@ -25,7 +25,8 @@ def fixture_cookiecutter_template(tmpdir):
         ]
     )
 
-    repo = template.ensure("{{cookiecutter.repo_name}}", dir=True)
-    repo.join("README.rst").write(template_readme)
+    template.joinpath("{{cookiecutter.repo_name}}").mkdir(exist_ok=True)
+
+    template.joinpath("README.rst").write_text(template_readme)
 
     return template

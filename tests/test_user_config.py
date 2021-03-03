@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 
-def test_config(testdir):
+def test_config(pytester):
     """Make sure that pytest accepts the `cookies` fixture."""
 
     # create a temporary pytest test module
-    testdir.makepyfile(
+    pytester.makepyfile(
         """
         # -*- coding: utf-8 -*-
 
@@ -38,7 +38,7 @@ def test_config(testdir):
     )
 
     # run pytest with the following cmd args
-    result = testdir.runpytest("-v")
+    result = pytester.runpytest("-v")
 
     # fnmatch_lines does an assertion internally
     result.stdout.fnmatch_lines(
