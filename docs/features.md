@@ -18,8 +18,8 @@ def test_readme(cookies):
     result = cookies.bake()
 
     readme_file = result.project.joinpath('README.rst')
-    readme_lines = readme_file.open(newline=None)
-    assert readme_lines == ['helloworld', '==========']
+    readme_lines = readme_file.read_text()
+    assert readme_lines == ['helloworld\n==========']
 ```
 
 [Path]: https://docs.python.org/3/library/pathlib.html#pathlib.Path
