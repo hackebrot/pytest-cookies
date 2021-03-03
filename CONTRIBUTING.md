@@ -70,7 +70,7 @@ development. Please note this documentation assumes you already have
     $ git clone https://github.com/YOUR-USERNAME/pytest-cookies
     ```
 
-3. Assuming you have virtualenv installed (If you have Python3.5 this should
+3. Assuming you have virtualenv installed (If you have Python3.6 this should
    already be there), you can create a new environment for your local
    development by typing:
 
@@ -145,7 +145,7 @@ Before you submit a pull request, check that it meets these guidelines:
    new functionality into a function with a docstring, and add the feature to
    the list in README.md.
 
-3. The pull request should work for Python 2.7, 3.4 and 3.5, and for PyPy.
+3. The pull request should work for Python 3.6, 3.7, 3.8, 3.9, and for PyPy.
    Check [travis pull requests][travis] and make sure that the tests pass for
    all supported Python versions.
 
