@@ -3,6 +3,7 @@
 import json
 import pytest
 
+
 def test_cookies_fixture(pytester):
     """Make sure that pytest accepts the `cookies` fixture."""
 
