@@ -4,6 +4,7 @@ environment:
   - TOXENV: py37
   - TOXENV: py38
   - TOXENV: py39
+  - TOXENV: pypy3
 
 build: off
 
