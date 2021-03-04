@@ -10,7 +10,9 @@ pytest_plugins = "pytester"
 
 @pytest.fixture(name="cookiecutter_template")
 def fixture_cookiecutter_template(tmp_path):
-    template = tmp_path
+    """cookiecutter template fixture"""
+    template = tmp_path.joinpath("cookiecutter-template")
+    template.mkdir(exist_ok=True)
 
     template_config = collections.OrderedDict(
         [("repo_name", "foobar"), ("short_description", "Test Project")]
@@ -26,7 +28,6 @@ def fixture_cookiecutter_template(tmp_path):
     )
 
     template.joinpath("{{cookiecutter.repo_name}}").mkdir(exist_ok=True)
-
     template.joinpath("README.rst").write_text(template_readme)
 
     return template

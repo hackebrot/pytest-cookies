@@ -33,8 +33,8 @@ def test_bake_project(cookies):
 
     assert result.exit_code == 0
     assert result.exception is None
-    assert result.project.basename == "helloworld"
-    assert result.project.isdir()
+    assert result.project.name == "helloworld"
+    assert result.project.is_dir()
 ```
 
 The ``cookies.bake()`` method also accepts the ``extra_context`` keyword
@@ -56,16 +56,19 @@ pytest --template TEMPLATE
 ```
 
 You can customize the cookiecutter template directory from a test by passing
-in the optional ``template`` paramter:
+in the optional ``template`` parameter:
 
 ```python
 @pytest.fixture
-def custom_template(tmpdir):
-    template = tmpdir.ensure("cookiecutter-template", dir=True)
-    template.join("cookiecutter.json").write('{"repo_name": "example-project"}')
+def custom_template(tmp_path):
+    template = tmp_path.joinpath("cookiecutter-template")
+    template.mkdir(exist_ok=True)
 
-    repo_dir = template.ensure("{{cookiecutter.repo_name}}", dir=True)
-    repo_dir.join("README.rst").write("{{cookiecutter.repo_name}}")
+    template.joinpath("cookiecutter.json").write_text('{"repo_name": "example-project"}')
+
+    repo_dir = template.joinpath("{{cookiecutter.repo_name}}")
+    repo_dir.mkdir(exist_ok=True)
+    repo_dir.joinpath("README.rst").write_text("{{cookiecutter.repo_name}}")
 
     return template
 
@@ -76,8 +79,8 @@ def test_bake_custom_project(cookies, custom_template):
 
     assert result.exit_code == 0
     assert result.exception is None
-    assert result.project.basename == "example-project"
-    assert result.project.isdir()
+    assert result.project.name == "example-project"
+    assert result.project.is_dir()
 ```
 
 ## Keep output directories for debugging
@@ -114,7 +117,7 @@ abide by its terms.
 Distributed under the terms of the [MIT license][license], **pytest-cookies**
 is free and open source software.
 
-[cookiecutter]: https://github.com/audreyr/cookiecutter
+[cookiecutter]: https://github.com/cookiecutter/cookiecutter
 [pytest]: https://github.com/pytest-dev/pytest
 [pip]: https://pypi.org/project/pip/
 [pypi]: https://pypi.org/project/pytest-cookies/

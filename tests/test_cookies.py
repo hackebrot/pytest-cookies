@@ -6,7 +6,6 @@ import pytest
 
 def test_cookies_fixture(pytester):
     """Make sure that pytest accepts the `cookies` fixture."""
-
     # create a temporary pytest test module
     pytester.makepyfile(
         """
@@ -60,7 +59,6 @@ def test_cookies_bake_template_kwarg_overrides_cli_option(
     pytester, cookiecutter_template
 ):
     """bake template kwarg overrides cli option."""
-
     pytester.makepyfile(
         """
         # -*- coding: utf-8 -*-
@@ -119,7 +117,6 @@ def test_cookies_bake_result_context(pytester, cookiecutter_template):
 
     Check that the result holds the rendered context.
     """
-
     pytester.makepyfile(
         """
         # -*- coding: utf-8 -*-
@@ -158,7 +155,6 @@ def test_cookies_bake_result_context_exception(pytester, cookiecutter_template):
     Check that exceptions resulting from rendering the context are stored on
     result and that the rendered context is not set.
     """
-
     pytester.makepyfile(
         """
         # -*- coding: utf-8 -*-
@@ -284,12 +280,11 @@ def test_cookies_bake_should_handle_exception(pytester):
 
     We expect **Cookiecutter** to raise a `NonTemplatedInputDirException`.
     """
-    template = pytester.path
+    template = pytester.path.joinpath("cookiecutter-fail")
+    template.mkdir(exist_ok=True)
 
     template_config = {"repo_name": "foobar", "short_description": "Test Project"}
     template.joinpath("cookiecutter.json").write_text(json.dumps(template_config))
-
-    template.joinpath("cookiecutter.repo_name").mkdir(exist_ok=True)
 
     pytester.makepyfile(
         """
@@ -314,13 +309,14 @@ def test_cookies_bake_choices(pytester, choice):
     """Programmatically create a **Cookiecutter** template and make sure that
     cookies.bake() works with choice variables.
     """
-    path = pytester.path
-    path.joinpath("cookiecutter-choices").mkdir(exist_ok=True)
-    template = path.joinpath("cookiecutter-choices")
+    template = pytester.path.joinpath("cookiecutter-choices")
+    template.mkdir(exist_ok=True)
+
     template_config = {"repo_name": "docs", "docs_tool": ["mkdocs", "sphinx", "none"]}
     template.joinpath("cookiecutter.json").write_text(json.dumps(template_config))
-    template.joinpath("{{cookiecutter.repo_name}}").mkdir(exist_ok=True)
+
     repo = template.joinpath("{{cookiecutter.repo_name}}")
+    repo.mkdir(exist_ok=True)
     repo.joinpath("README.rst").write_text("docs_tool: {{cookiecutter.docs_tool}}")
 
     pytester.makepyfile(

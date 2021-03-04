@@ -3,7 +3,6 @@
 
 def test_config(pytester):
     """Make sure that pytest accepts the `cookies` fixture."""
-
     # create a temporary pytest test module
     pytester.makepyfile(
         """
