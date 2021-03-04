@@ -1,4 +1,4 @@
-image: Ubuntu2004
+image: Visual Studio 2019
 
 environment:
   matrix:
@@ -11,7 +11,7 @@ environment:
 build: off
 
 install:
-  - pip3 install tox
+  - pip install tox
 
 test_script:
   - tox
