@@ -1,3 +1,5 @@
+image: Ubuntu2004
+
 environment:
   matrix:
   - TOXENV: py36
