@@ -167,7 +167,7 @@ def pytest_addoption(parser):
         default=".",
         dest="template",
         help="specify the template to be rendered",
-        type="string",
+        type=str,
     )
 
     group.addoption(
