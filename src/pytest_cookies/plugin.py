@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import os
+import warnings
 
 import py
 import pytest
-
-from cookiecutter.main import cookiecutter
 from cookiecutter.generate import generate_context
+from cookiecutter.main import cookiecutter
 from cookiecutter.prompt import prompt_for_config
 
 USER_CONFIG = u"""
@@ -27,6 +27,11 @@ class Result(object):
     @property
     def project(self):
         if self.exception is None:
+            warnings.warn(
+                DeprecationWarning(
+                    "project is planned to return a pathlib.Path in the future"
+                )
+            )
             return py.path.local(self._project_dir)
 
         return None
