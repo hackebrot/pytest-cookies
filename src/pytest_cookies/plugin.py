@@ -99,7 +99,7 @@ class Cookies(object):
 
 @pytest.fixture(scope="session")
 def _cookiecutter_config_file(tmp_path_factory):
-    user_dir = tmp_path_factory.mktemp("user_dir")
+    user_dir = tmp_path_factory.mktemp(basename="user_dir")
 
     cookiecutters_dir = user_dir.joinpath("cookiecutters")
     cookiecutters_dir.mkdir()
@@ -152,8 +152,7 @@ def cookies_session(request, tmp_path_factory, _cookiecutter_config_file):
     """
     template_dir = request.config.option.template
 
-    output_dir = tmp_path_factory.mktemp("cookies")
-    output_dir.mkdir()
+    output_dir = tmp_path_factory.mktemp(basename="cookies")
     output_factory = output_dir
 
     yield Cookies(template_dir, output_factory, _cookiecutter_config_file)
