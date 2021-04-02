@@ -218,13 +218,13 @@ def test_cookies_fixture_removes_output_directories(pytester, cookiecutter_templ
         from pathlib import Path
 
         def test_to_create_result(cookies):
-            global result_parent
+            global result_path
             result = cookies.bake()
-            result_parent = result.project.parent
+            result_path = result.project
             assert result.exception is None
 
         def test_previously_generated_directory_is_removed(cookies):
-            exists = Path.is_dir(result_parent)
+            exists = result_path.is_dir()
             assert exists is False
     """
     )
@@ -251,13 +251,13 @@ def test_cookies_fixture_doesnt_remove_output_directories(
         from pathlib import Path
 
         def test_to_create_result(cookies):
-            global result_parent
+            global result_path
             result = cookies.bake()
-            result_parent = result.project.parent
+            result_path = result.project
             assert result.exception is None
 
         def test_previously_generated_directory_is_not_removed(cookies):
-            exists = Path.is_dir(result_parent)
+            exists = result_path.is_dir()
             assert exists is True
     """
     )
@@ -334,7 +334,6 @@ def test_cookies_bake_choices(pytester, choice):
             assert result.project.name == 'docs'
             assert result.project.is_dir()
 
-            print(result.project)
             assert result.project.joinpath('README.rst').read_text() == 'docs_tool: %s'
 
             assert str(result) == '<Result {}>'.format(result.project)

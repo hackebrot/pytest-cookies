@@ -15,9 +15,9 @@ def test_config(pytester):
         def test_user_dir(tmp_path_factory, _cookiecutter_config_file):
             basetemp = tmp_path_factory.getbasetemp()
 
-            assert _cookiecutter_config_file.absolute().name == 'config'
+            assert _cookiecutter_config_file.name == 'config'
 
-            user_dir = _cookiecutter_config_file.absolute().parent
+            user_dir = _cookiecutter_config_file.parent
             assert re.match('user_dir?', user_dir.name)
 
             assert user_dir.parent == basetemp

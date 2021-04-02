@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import os
+import shutil
 
 from pathlib import Path
 import pytest
@@ -130,13 +130,13 @@ def cookies(request, tmp_path, _cookiecutter_config_file):
 
     output_dir = tmp_path.joinpath("cookies")
     output_dir.mkdir()
-    output_factory = output_dir
+    output_factory = output_factory_closure(output_dir)
 
     yield Cookies(template_dir, output_factory, _cookiecutter_config_file)
 
     # Add option to keep generated output directories.
     if not request.config.option.keep_baked_projects:
-        output_dir.rmdir()
+        shutil.rmtree(output_dir)
 
 
 @pytest.fixture(scope="session")
@@ -153,13 +153,13 @@ def cookies_session(request, tmp_path_factory, _cookiecutter_config_file):
     template_dir = request.config.option.template
 
     output_dir = tmp_path_factory.mktemp(basename="cookies")
-    output_factory = output_dir
+    output_factory = output_factory_closure(output_dir)
 
     yield Cookies(template_dir, output_factory, _cookiecutter_config_file)
 
     # Add option to keep generated output directories.
     if not request.config.option.keep_baked_projects:
-        output_dir.rmdir()
+        shutil.rmtree(output_dir)
 
 
 def pytest_addoption(parser):
@@ -183,6 +183,14 @@ def pytest_addoption(parser):
 
 
 def pytest_configure(config):
-    # To protect ourselves from tests or fixtures changing directories, keep
-    # an absolute path to the template.
-    config.option.template = os.path.abspath(config.option.template)
+    # To protect ourselves from tests or fixtures changing directories, keep an
+    # absolute path to the template.
+    config.option.template = str(Path(config.option.template).absolute())
+
+
+def output_factory_closure(directory):
+    def output_factory(sub_dir):
+        directory.joinpath(sub_dir).mkdir()
+        return directory.joinpath(sub_dir)
+
+    return output_factory
