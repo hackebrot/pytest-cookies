@@ -101,13 +101,15 @@ class Cookies(object):
 def _cookiecutter_config_file(tmp_path_factory):
     user_dir = tmp_path_factory.mktemp("user_dir")
 
-    cookiecutters_dir = user_dir.joinpath("cookiecutters").mkdir()
-    replay_dir = user_dir.joinpath("cookiecutter_replay").mkdir()
+    cookiecutters_dir = user_dir.joinpath("cookiecutters")
+    cookiecutters_dir.mkdir()
+    replay_dir = user_dir.joinpath("cookiecutter_replay")
+    replay_dir.mkdir()
 
     config_text = USER_CONFIG.format(
         cookiecutters_dir=cookiecutters_dir, replay_dir=replay_dir
     )
-    config_file = user_dir.join("config")
+    config_file = user_dir.joinpath("config")
 
     config_file.write_text(config_text, encoding="utf8")
     return config_file
@@ -126,14 +128,15 @@ def cookies(request, tmp_path, _cookiecutter_config_file):
     """
     template_dir = request.config.option.template
 
-    output_dir = tmp_path.joinpath("cookies").mkdir()
-    output_factory = output_dir.mkdir()
+    output_dir = tmp_path.joinpath("cookies")
+    output_dir.mkdir()
+    output_factory = output_dir
 
     yield Cookies(template_dir, output_factory, _cookiecutter_config_file)
 
     # Add option to keep generated output directories.
     if not request.config.option.keep_baked_projects:
-        output_dir.remove()
+        output_dir.rmdir()
 
 
 @pytest.fixture(scope="session")
@@ -150,13 +153,14 @@ def cookies_session(request, tmp_path_factory, _cookiecutter_config_file):
     template_dir = request.config.option.template
 
     output_dir = tmp_path_factory.mktemp("cookies")
-    output_factory = output_dir.mkdir()
+    output_dir.mkdir()
+    output_factory = output_dir
 
     yield Cookies(template_dir, output_factory, _cookiecutter_config_file)
 
     # Add option to keep generated output directories.
     if not request.config.option.keep_baked_projects:
-        output_dir.remove()
+        output_dir.rmdir()
 
 
 def pytest_addoption(parser):

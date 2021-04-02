@@ -9,28 +9,29 @@ def test_config(pytester):
         # -*- coding: utf-8 -*-
 
         import poyo
+        import re
 
 
         def test_user_dir(tmp_path_factory, _cookiecutter_config_file):
             basetemp = tmp_path_factory.getbasetemp()
 
-            assert _cookiecutter_config_file.basename == 'config'
+            assert _cookiecutter_config_file.absolute().name == 'config'
 
-            user_dir = _cookiecutter_config_file.dirpath()
-            assert user_dir.fnmatch('user_dir?')
+            user_dir = _cookiecutter_config_file.absolute().parent
+            assert re.match('user_dir?', user_dir.name)
 
-            assert user_dir.dirpath() == basetemp
+            assert user_dir.parent == basetemp
 
 
         def test_valid_cookiecutter_config(_cookiecutter_config_file):
-            config_text = _cookiecutter_config_file.read()
+            config_text = _cookiecutter_config_file.read_text()
             config = poyo.parse_string(config_text)
 
-            user_dir = _cookiecutter_config_file.dirpath()
+            user_dir = _cookiecutter_config_file.parent
 
             expected = {
-                'cookiecutters_dir': str(user_dir.join('cookiecutters')),
-                'replay_dir': str(user_dir.join('cookiecutter_replay')),
+                'cookiecutters_dir': str(user_dir.joinpath('cookiecutters')),
+                'replay_dir': str(user_dir.joinpath('cookiecutter_replay')),
             }
             assert config == expected
     """
