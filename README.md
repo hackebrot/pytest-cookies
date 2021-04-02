@@ -122,7 +122,7 @@ is free and open source software.
 [pip]: https://pypi.org/project/pip/
 [pypi]: https://pypi.org/project/pytest-cookies/
 [extra-context]: https://cookiecutter.readthedocs.io/en/latest/advanced/injecting_context.html
-[temporary-directories]: https://docs.pytest.org/en/latest/tmpdir.html#the-default-base-temporary-directory
+[temporary-directories]: https://docs.pytest.org/en/latest/reference/reference.html?highlight=tmp_path#tmp-path
 [tox]: https://pypi.org/project/tox/
 [new-issue]: https://github.com/hackebrot/pytest-cookies/issues
 [code-of-conduct]: https://github.com/hackebrot/pytest-cookies/blob/master/CODE_OF_CONDUCT.md

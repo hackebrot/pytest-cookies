@@ -98,11 +98,11 @@ class Cookies(object):
 
 
 @pytest.fixture(scope="session")
-def _cookiecutter_config_file(tmpdir_factory):
-    user_dir = tmpdir_factory.mktemp("user_dir")
+def _cookiecutter_config_file(tmp_path_factory):
+    user_dir = tmp_path_factory.mktemp("user_dir")
 
-    cookiecutters_dir = user_dir.mkdir("cookiecutters")
-    replay_dir = user_dir.mkdir("cookiecutter_replay")
+    cookiecutters_dir = user_dir.joinpath("cookiecutters").mkdir()
+    replay_dir = user_dir.joinpath("cookiecutter_replay").mkdir()
 
     config_text = USER_CONFIG.format(
         cookiecutters_dir=cookiecutters_dir, replay_dir=replay_dir
@@ -114,7 +114,7 @@ def _cookiecutter_config_file(tmpdir_factory):
 
 
 @pytest.fixture
-def cookies(request, tmpdir, _cookiecutter_config_file):
+def cookies(request, tmp_path, _cookiecutter_config_file):
     """Yield an instance of the Cookies helper class that can be used to
     generate a project from a template.
 
@@ -126,8 +126,8 @@ def cookies(request, tmpdir, _cookiecutter_config_file):
     """
     template_dir = request.config.option.template
 
-    output_dir = tmpdir.mkdir("cookies")
-    output_factory = output_dir.mkdir
+    output_dir = tmp_path.joinpath("cookies").mkdir()
+    output_factory = output_dir.mkdir()
 
     yield Cookies(template_dir, output_factory, _cookiecutter_config_file)
 
@@ -137,7 +137,7 @@ def cookies(request, tmpdir, _cookiecutter_config_file):
 
 
 @pytest.fixture(scope="session")
-def cookies_session(request, tmpdir_factory, _cookiecutter_config_file):
+def cookies_session(request, tmp_path_factory, _cookiecutter_config_file):
     """Yield an instance of the Cookies helper class that can be used to
     generate a project from a template.
 
@@ -149,8 +149,8 @@ def cookies_session(request, tmpdir_factory, _cookiecutter_config_file):
     """
     template_dir = request.config.option.template
 
-    output_dir = tmpdir_factory.mktemp("cookies")
-    output_factory = output_dir.mkdir
+    output_dir = tmp_path_factory.mktemp("cookies")
+    output_factory = output_dir.mkdir()
 
     yield Cookies(template_dir, output_factory, _cookiecutter_config_file)
 

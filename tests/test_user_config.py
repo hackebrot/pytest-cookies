@@ -11,8 +11,8 @@ def test_config(pytester):
         import poyo
 
 
-        def test_user_dir(tmpdir_factory, _cookiecutter_config_file):
-            basetemp = tmpdir_factory.getbasetemp()
+        def test_user_dir(tmp_path_factory, _cookiecutter_config_file):
+            basetemp = tmp_path_factory.getbasetemp()
 
             assert _cookiecutter_config_file.basename == 'config'
 
