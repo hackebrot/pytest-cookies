@@ -130,7 +130,7 @@ def cookies(request, tmp_path, _cookiecutter_config_file):
 
     output_dir = tmp_path.joinpath("cookies")
     output_dir.mkdir()
-    output_factory = output_factory_closure(output_dir)
+    output_factory = _output_factory_closure(output_dir)
 
     yield Cookies(template_dir, output_factory, _cookiecutter_config_file)
 
@@ -153,7 +153,7 @@ def cookies_session(request, tmp_path_factory, _cookiecutter_config_file):
     template_dir = request.config.option.template
 
     output_dir = tmp_path_factory.mktemp(basename="cookies")
-    output_factory = output_factory_closure(output_dir)
+    output_factory = _output_factory_closure(output_dir)
 
     yield Cookies(template_dir, output_factory, _cookiecutter_config_file)
 
@@ -188,7 +188,7 @@ def pytest_configure(config):
     config.option.template = str(Path(config.option.template).absolute())
 
 
-def output_factory_closure(directory):
+def _output_factory_closure(directory):
     def output_factory(sub_dir):
         directory.joinpath(sub_dir).mkdir()
         return directory.joinpath(sub_dir)
