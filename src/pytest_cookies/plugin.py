@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import pathlib
 import warnings
 
 import py
@@ -26,13 +27,29 @@ class Result(object):
 
     @property
     def project(self):
+        """Return a py.path.local object if no exception occurred."""
+        warning_message = (
+            "project is deprecated and will be removed in a future release, "
+            "please use project_path instead."
+        )
+
+        warnings.warn(
+            warning_message,
+            DeprecationWarning,
+            stacklevel=1,
+        )
+
         if self.exception is None:
-            warnings.warn(
-                DeprecationWarning(
-                    "project is planned to return a pathlib.Path in the future"
-                )
-            )
             return py.path.local(self._project_dir)
+
+        return None
+
+    @property
+    def project_path(self):
+        """Return a pathlib.Path object if no exception occurred."""
+
+        if self.exception is None:
+            return pathlib.Path(self._project_dir)
 
         return None
 
