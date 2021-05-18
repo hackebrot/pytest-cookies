@@ -113,6 +113,46 @@ def test_cookies_bake(testdir, cookiecutter_template):
     result.stdout.fnmatch_lines(["*::test_bake_project PASSED*"])
 
 
+def test_cookies_bake_project_warning(testdir, cookiecutter_template):
+    """Programmatically create a **Cookiecutter** template and use `bake` to
+    create a project from it and check for warnings when accesssing the project
+    attribute.
+    """
+    testdir.makepyfile(
+        """
+        # -*- coding: utf-8 -*-
+        import warnings
+
+        def test_bake_project(cookies):
+            warning_message = (
+                "project is deprecated and will be removed in a future release, "
+                "please use project_path instead."
+            )
+
+            result = cookies.bake(extra_context={'repo_name': 'helloworld'})
+
+            assert result.exit_code == 0
+            assert result.exception is None
+
+            with warnings.catch_warnings(record=True) as w:
+                warnings.simplefilter("always")
+                project_basename = result.project.basename
+
+            assert project_basename == 'helloworld'
+
+            [warning] = w
+            assert issubclass(warning.category, DeprecationWarning)
+            assert str(warning.message) == warning_message
+
+            assert str(result) == '<Result {}>'.format(result.project)
+    """
+    )
+
+    result = testdir.runpytest("-v", "--template={}".format(cookiecutter_template))
+
+    result.stdout.fnmatch_lines(["*::test_bake_project PASSED*"])
+
+
 def test_cookies_bake_result_context(testdir, cookiecutter_template):
     """Programmatically create a **Cookiecutter** template and use `bake` to
     create a project from it.
