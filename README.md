@@ -33,9 +33,18 @@ def test_bake_project(cookies):
 
     assert result.exit_code == 0
     assert result.exception is None
+
+    assert result.project_path.name == "helloworld"
+    assert result.project_path.is_dir()
+
+    # The `project` attribute is deprecated
     assert result.project.basename == "helloworld"
     assert result.project.isdir()
 ```
+
+**Please note that the `project` attribute of the returned `Result` class is
+deprecated and will be removed in a future release, please use `project_path`
+instead.**
 
 The ``cookies.bake()`` method also accepts the ``extra_context`` keyword
 argument that will be passed to cookiecutter. The given dictionary will
@@ -76,8 +85,9 @@ def test_bake_custom_project(cookies, custom_template):
 
     assert result.exit_code == 0
     assert result.exception is None
-    assert result.project.basename == "example-project"
-    assert result.project.isdir()
+
+    assert result.project_path.name == "example-project"
+    assert result.project_path.is_dir()
 ```
 
 ## Keep output directories for debugging
