@@ -11,11 +11,13 @@
 - [@insspb]
 - [@jakirkham]
 - [@jamesmyatt]
+- [@jayvdb]
 - [@jsmedmar]
 - [@jyrno42]
 - [@nedbat]
 - [@obestwalter]
 - [@pydanny]
+- [@sobolevn]
 
 [@insspb]: https://github.com/insspb
 [@jakirkham]: https://github.com/jakirkham
@@ -25,3 +27,5 @@
 [@nedbat]: https://github.com/nedbat
 [@obestwalter]: https://github.com/obestwalter
 [@pydanny]: https://github.com/pydanny
+[@jayvdb]: https://github.com/jayvdb
+[@sobolevn]: https://github.com/sobolevn

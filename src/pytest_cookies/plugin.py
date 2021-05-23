@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
 import os
+import pathlib
+import warnings
 
 import py
 import pytest
-
-from cookiecutter.main import cookiecutter
 from cookiecutter.generate import generate_context
+from cookiecutter.main import cookiecutter
 from cookiecutter.prompt import prompt_for_config
 
 USER_CONFIG = u"""
@@ -26,8 +27,29 @@ class Result(object):
 
     @property
     def project(self):
+        """Return a py.path.local object if no exception occurred."""
+        warning_message = (
+            "project is deprecated and will be removed in a future release, "
+            "please use project_path instead."
+        )
+
+        warnings.warn(
+            warning_message,
+            DeprecationWarning,
+            stacklevel=1,
+        )
+
         if self.exception is None:
             return py.path.local(self._project_dir)
+
+        return None
+
+    @property
+    def project_path(self):
+        """Return a pathlib.Path object if no exception occurred."""
+
+        if self.exception is None:
+            return pathlib.Path(self._project_dir)
 
         return None
 
@@ -167,7 +189,7 @@ def pytest_addoption(parser):
         default=".",
         dest="template",
         help="specify the template to be rendered",
-        type="string",
+        type=str,
     )
 
     group.addoption(
