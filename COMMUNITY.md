@@ -19,6 +19,7 @@
 - [@pydanny]
 - [@sobolevn]
 - [@JonZeolla]
+- [@hoefling]
 
 [@insspb]: https://github.com/insspb
 [@jakirkham]: https://github.com/jakirkham
@@ -31,3 +32,4 @@
 [@jayvdb]: https://github.com/jayvdb
 [@sobolevn]: https://github.com/sobolevn
 [@JonZeolla]: https://github.com/JonZeolla
+[@hoefling]: https://github.com/hoefling
