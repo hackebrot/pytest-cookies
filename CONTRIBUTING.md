@@ -146,10 +146,6 @@ Before you submit a pull request, check that it meets these guidelines:
    the list in README.md.
 
 3. The pull request should work for Python 3.6, 3.7, 3.8 and 3.9.
-   Check [travis pull requests][travis] and make sure that the tests pass for
-   all supported Python versions.
-
-[travis]: https://travis-ci.org/hackebrot/pytest-cookies/pull_requests
 
 Add a New Test
 ---------------
