@@ -84,7 +84,7 @@ class Cookies(object):
         if template is None:
             template = self._default_template
 
-        context_file = py.path.local(template).join("cookiecutter.json")
+        context_file = pathlib.Path(template) / "cookiecutter.json"
 
         try:
             # Render the context, so that we can store it on the Result
