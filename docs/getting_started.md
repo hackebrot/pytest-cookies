@@ -24,8 +24,8 @@ def test_bake_project(cookies):
 
     assert result.exit_code == 0
     assert result.exception is None
-    assert result.project.basename == 'helloworld'
-    assert result.project.isdir()
+    assert result.project_path.name == "helloworld"
+    assert result.project_path.is_dir()
 ```
 
 It accepts the ``extra_context`` keyword argument that will be

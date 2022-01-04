@@ -42,10 +42,10 @@ def test_cookies_bake_with_template_kwarg(testdir, cookiecutter_template):
 
             assert result.exit_code == 0
             assert result.exception is None
-            assert result.project.basename == 'helloworld'
-            assert result.project.isdir()
+            assert result.project_path.name == "helloworld"
+            assert result.project_path.is_dir()
 
-            assert str(result) == '<Result {}>'.format(result.project)
+            assert str(result) == '<Result {}>'.format(result.project_path.name)
     """
         % cookiecutter_template
     )
@@ -73,10 +73,10 @@ def test_cookies_bake_template_kwarg_overrides_cli_option(
 
             assert result.exit_code == 0
             assert result.exception is None
-            assert result.project.basename == 'helloworld'
-            assert result.project.isdir()
+            assert result.project_path.name == "helloworld"
+            assert result.project_path.is_dir()
 
-            assert str(result) == '<Result {}>'.format(result.project)
+            assert str(result) == '<Result {}>'.format(result.project_path.name)
     """
         % cookiecutter_template
     )
@@ -104,11 +104,7 @@ def test_cookies_bake(testdir, cookiecutter_template):
 
             assert result.project_path.name == 'helloworld'
             assert result.project_path.is_dir()
-            assert str(result) == '<Result {}>'.format(result.project_path)
-
-            assert result.project.basename == 'helloworld'
-            assert result.project.isdir()
-            assert str(result) == '<Result {}>'.format(result.project)
+            assert str(result) == '<Result {}>'.format(result.project_path.name)
     """
     )
 
@@ -148,7 +144,7 @@ def test_cookies_bake_project_warning(testdir, cookiecutter_template):
             assert issubclass(warning.category, DeprecationWarning)
             assert str(warning.message) == warning_message
 
-            assert str(result) == '<Result {}>'.format(result.project)
+            # assert str(result) == '<Result {}>'.format(result.project)
     """
     )
 
@@ -178,15 +174,15 @@ def test_cookies_bake_result_context(testdir, cookiecutter_template):
 
             assert result.exit_code == 0
             assert result.exception is None
-            assert result.project.basename == 'cookies'
-            assert result.project.isdir()
+            assert result.project_path.name == "cookies"
+            assert result.project_path.is_dir()
 
             assert result.context == {
                 'repo_name': 'cookies',
                 'short_description': 'cookies is awesome',
             }
 
-            assert str(result) == '<Result {}>'.format(result.project)
+            assert str(result) == '<Result {}>'.format(result.project_path.name)
     """
     )
 
@@ -217,7 +213,7 @@ def test_cookies_bake_result_context_exception(testdir, cookiecutter_template):
 
             assert result.exit_code == -1
             assert result.exception is not None
-            assert result.project is None
+            assert result.project_path is None
 
             assert result.context is None
 
@@ -243,11 +239,11 @@ def test_cookies_bake_should_create_new_output_directories(
         def test_bake_should_create_new_output(cookies):
             first_result = cookies.bake()
             assert first_result.exception is None
-            assert first_result.project.dirname.endswith('bake00')
+            assert first_result.project_path.parent.name.endswith('bake00')
 
             second_result = cookies.bake()
             assert second_result.exception is None
-            assert second_result.project.dirname.endswith('bake01')
+            assert second_result.project_path.parent.name.endswith('bake01')
     """
     )
 
@@ -266,14 +262,13 @@ def test_cookies_fixture_removes_output_directories(testdir, cookiecutter_templa
         import os
 
         def test_to_create_result(cookies):
-            global result_dirname
+            global result_dir
             result = cookies.bake()
-            result_dirname = result.project.dirname
+            result_dir = result.project_path
             assert result.exception is None
 
         def test_previously_generated_directory_is_removed(cookies):
-            exists = os.path.isdir(result_dirname)
-            assert exists is False
+            assert result_dir.exists() is False
     """
     )
 
@@ -299,14 +294,13 @@ def test_cookies_fixture_doesnt_remove_output_directories(
         import os
 
         def test_to_create_result(cookies):
-            global result_dirname
+            global result_dir
             result = cookies.bake()
-            result_dirname = result.project.dirname
+            result_dir = result.project_path
             assert result.exception is None
 
         def test_previously_generated_directory_is_not_removed(cookies):
-            exists = os.path.isdir(result_dirname)
-            assert exists is True
+            assert result_dir.exists()
     """
     )
 
@@ -344,7 +338,7 @@ def test_cookies_bake_should_handle_exception(testdir):
 
             assert result.exit_code == -1
             assert result.exception is not None
-            assert result.project is None
+            assert result.project_path is None
     """
     )
 
@@ -377,12 +371,12 @@ def test_cookies_bake_choices(testdir, choice):
 
             assert result.exit_code == 0
             assert result.exception is None
-            assert result.project.basename == 'docs'
-            assert result.project.isdir()
+            assert result.project_path.name == 'docs'
+            assert result.project_path.is_dir()
 
-            assert result.project.join('README.rst').read() == 'docs_tool: %s'
+            assert (result.project_path / 'README.rst').read_text() == 'docs_tool: %s'
 
-            assert str(result) == '<Result {}>'.format(result.project)
+            assert str(result) == '<Result {}>'.format(result.project_path.name)
     """
         % (choice, template, choice)
     )
