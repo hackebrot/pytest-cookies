@@ -11,8 +11,8 @@ from cookiecutter.main import cookiecutter
 from cookiecutter.prompt import prompt_for_config
 
 USER_CONFIG = u"""
-cookiecutters_dir: "{cookiecutters_dir}"
-replay_dir: "{replay_dir}"
+cookiecutters_dir: '{cookiecutters_dir}'
+replay_dir: '{replay_dir}'
 """
 
 
