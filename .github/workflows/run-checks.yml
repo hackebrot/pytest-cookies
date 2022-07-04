@@ -17,7 +17,7 @@ jobs:
             python: "3.8"
           - environment: "py39"
             python: "3.9"
-          - environment: "py10"
+          - environment: "py310"
             python: "3.10"
           - environment: "flake8"
             python: "3.7"
