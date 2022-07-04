@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import json
 import os
 import pathlib
 import warnings
@@ -9,11 +10,6 @@ import pytest
 from cookiecutter.generate import generate_context
 from cookiecutter.main import cookiecutter
 from cookiecutter.prompt import prompt_for_config
-
-USER_CONFIG = u"""
-cookiecutters_dir: "{cookiecutters_dir}"
-replay_dir: "{replay_dir}"
-"""
 
 
 class Result(object):
@@ -122,16 +118,17 @@ class Cookies(object):
 @pytest.fixture(scope="session")
 def _cookiecutter_config_file(tmpdir_factory):
     user_dir = tmpdir_factory.mktemp("user_dir")
-
-    cookiecutters_dir = user_dir.mkdir("cookiecutters")
-    replay_dir = user_dir.mkdir("cookiecutter_replay")
-
-    config_text = USER_CONFIG.format(
-        cookiecutters_dir=cookiecutters_dir, replay_dir=replay_dir
-    )
     config_file = user_dir.join("config")
 
-    config_file.write_text(config_text, encoding="utf8")
+    config = {
+        "cookiecutters_dir": str(user_dir.mkdir("cookiecutters")),
+        "replay_dir": str(user_dir.mkdir("cookiecutter_replay")),
+    }
+
+    # Note that the file is expected to be YAML, but JSON is a subset of YAML
+    with config_file.open("w", encoding="utf-8") as f:
+        json.dump(config, f, indent=2)
+
     return config_file
 
 
