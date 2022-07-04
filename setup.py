@@ -13,7 +13,7 @@ def read(fname):
 
 setuptools.setup(
     name="pytest-cookies",
-    version="0.6.1",
+    version="0.7.0",
     author="Raphael Pierzina",
     author_email="raphael@hackebrot.de",
     maintainer="Raphael Pierzina",
@@ -31,10 +31,10 @@ setuptools.setup(
     package_dir={"": "src"},
     include_package_data=True,
     zip_safe=False,
-    python_requires=">=3.6",
+    python_requires=">=3.7",
     install_requires=[
-        "cookiecutter>=1.4.0",
-        "pytest>=3.3.0",
+        "cookiecutter>=2.0.1",
+        "pytest>=3.9.0",
     ],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
@@ -42,10 +42,10 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3 :: Only",
-        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: Implementation :: CPython",
         "Programming Language :: Python",
         "Topic :: Software Development :: Testing",
