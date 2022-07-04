@@ -33,9 +33,8 @@ setuptools.setup(
     zip_safe=False,
     python_requires=">=3.7",
     install_requires=[
-        "cookiecutter>=1.4.0",
+        "cookiecutter>=2.1.0",
         "pytest>=3.9.0",  # adds tmp_path fixtures
-        "pyyaml>=5.3.1",  # matches cookiecutter 2.1.0
     ],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
