@@ -25,7 +25,7 @@ def test_config(testdir):
 
         def test_valid_cookiecutter_config(_cookiecutter_config_file):
             with open(_cookiecutter_config_file) as f:            
-                config = yaml.load(f)
+                config = yaml.load(f, Loader=yaml.Loader)
 
             user_dir = _cookiecutter_config_file.dirpath()
 
