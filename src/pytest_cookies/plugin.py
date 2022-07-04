@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
-import json
 import os
 import pathlib
 import warnings
 
 import py
 import pytest
+import yaml
+
 from cookiecutter.generate import generate_context
 from cookiecutter.main import cookiecutter
 from cookiecutter.prompt import prompt_for_config
@@ -125,9 +126,8 @@ def _cookiecutter_config_file(tmpdir_factory):
         "replay_dir": str(user_dir.mkdir("cookiecutter_replay")),
     }
 
-    # Note that the file is expected to be YAML, but JSON is a subset of YAML
     with config_file.open("w", encoding="utf-8") as f:
-        json.dump(config, f, indent=2)
+        yaml.dump(config, f, Dumper=yaml.Dumper)
 
     return config_file
 
