@@ -33,7 +33,7 @@ setuptools.setup(
     zip_safe=False,
     python_requires=">=3.7",
     install_requires=[
-        "cookiecutter>=2.1.0",
+        "cookiecutter>=2.1.0",  # uses pyyaml
         "pytest>=3.9.0",  # adds tmp_path fixtures
     ],
     classifiers=[
