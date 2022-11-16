@@ -8,7 +8,7 @@ jobs:
       fail-fast: false
       matrix:
         os: ["ubuntu-latest", "macos-latest", "windows-latest"]
-        environment: ["py37", "py38", "py39", "py310", "flake8"]
+        environment: ["py37", "py38", "py39", "py310", "py311", "flake8"]
 
         include:
           - environment: "py37"
