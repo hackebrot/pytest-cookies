@@ -19,5 +19,5 @@ and open source software
 
 [file an issue]: https://github.com/hackebrot/pytest-cookies/issues
 [tox]: https://tox.readthedocs.org/en/latest/
-[coc]: https://github.com/hackebrot/pytest-cookies/blob/master/CODE_OF_CONDUCT.md
+[coc]: https://github.com/hackebrot/pytest-cookies/blob/main/CODE_OF_CONDUCT.md
 [MIT]: http://opensource.org/licenses/MIT

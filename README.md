@@ -132,6 +132,6 @@ is free and open source software.
 [temporary-directories]: https://docs.pytest.org/en/latest/tmpdir.html#the-default-base-temporary-directory
 [tox]: https://pypi.org/project/tox/
 [new-issue]: https://github.com/hackebrot/pytest-cookies/issues
-[code-of-conduct]: https://github.com/hackebrot/pytest-cookies/blob/master/CODE_OF_CONDUCT.md
-[community]: https://github.com/hackebrot/pytest-cookies/blob/master/COMMUNITY.md
-[license]: https://github.com/hackebrot/pytest-cookies/blob/master/LICENSE
+[code-of-conduct]: https://github.com/hackebrot/pytest-cookies/blob/main/CODE_OF_CONDUCT.md
+[community]: https://github.com/hackebrot/pytest-cookies/blob/main/COMMUNITY.md
+[license]: https://github.com/hackebrot/pytest-cookies/blob/main/LICENSE
