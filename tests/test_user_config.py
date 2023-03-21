@@ -9,7 +9,7 @@ def test_config(testdir):
         """
         # -*- coding: utf-8 -*-
 
-        import poyo
+        import yaml
 
 
         def test_user_dir(tmpdir_factory, _cookiecutter_config_file):
@@ -24,8 +24,8 @@ def test_config(testdir):
 
 
         def test_valid_cookiecutter_config(_cookiecutter_config_file):
-            config_text = _cookiecutter_config_file.read()
-            config = poyo.parse_string(config_text)
+            with open(_cookiecutter_config_file) as f:
+                config = yaml.load(f, Loader=yaml.Loader)
 
             user_dir = _cookiecutter_config_file.dirpath()
 
