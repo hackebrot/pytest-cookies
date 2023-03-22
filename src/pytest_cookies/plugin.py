@@ -54,7 +54,7 @@ class Result(object):
         if self.exception:
             return "<Result {!r}>".format(self.exception)
 
-        return "<Result {}>".format(self.project)
+        return "<Result {}>".format(self.project_path.name)
 
 
 class Cookies(object):
