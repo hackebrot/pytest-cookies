@@ -102,6 +102,39 @@ three newest temporary directories):
 pytest --keep-baked-projects
 ```
 
+## Automatic Testing of Baked Package
+If you're baked package has automatic tests, you can also run those tests automatically like so:
+
+```
+import os
+import subprocess
+import tempfile
+
+
+def run_package_tests(path):
+    # Go to the given path
+    os.chdir(path)
+
+    # Create a temporary directory as the environment
+    with tempfile.TemporaryDirectory() as temp_dir:
+        # Create a virtual environment
+        subprocess.check_call(["python3", "-m", "venv", temp_dir])
+
+        # Activate the virtual environment
+        activate_script = os.path.join(temp_dir, 'bin', 'activate')
+
+        # Install the Python package
+        subprocess.check_call(["bash", "-c", f"source {activate_script} && pip install ."])
+
+        # Run pytest
+        subprocess.check_call(["bash", "-c", f"source {activate_script} && pytest ."])
+
+
+def test_bake_project(cookies):
+    result = cookies.bake()
+    run_package_tests(result._project_dir)
+```
+
 # Community
 
 Contributions are very welcome! If you encounter any problems, please [file
