@@ -157,14 +157,26 @@ def cookies(request, tmpdir, _cookiecutter_config_file):
 
 @pytest.fixture(scope="session")
 def cookies_session(request, tmpdir_factory, _cookiecutter_config_file):
-    """Yield an instance of the Cookies helper class that can be used to
-    generate a project from a template.
+    """Like `cookies` this yields an instance of the `Cookies` helper class.
+    This instance is scoped at the _session_ level to persist the environment
+    throughout the testing sessioninstead of rebuilding with each referenced test.
 
     Run cookiecutter:
-        result = cookies.bake(extra_context={
-            'variable1': 'value1',
-            'variable2': 'value2',
-        })
+        @pytest.fixture(scope="module")
+        def bakery(request, context, cookies_session):
+            """create a session-wide cookiecutter instance"""
+            result = cookies_session.bake(extra_context={
+                "value_1": "value_1",
+                "value_2": "value_2",
+            })
+            yield result
+
+    Call the session in multiple tests:
+        def test_session_project_path(bakery):
+            assert bakery.project_path == "SAME/PATH/"
+
+        def test_session_same_project_path(bakery):
+            assert bakery.project_path == "SAME/PATH/"
     """
     template_dir = request.config.option.template
 
