@@ -1,4 +1,6 @@
-# Bake Result
+# Features
+
+## Bake Results
 
 ``cookies.bake()`` returns a result instance with a bunch of fields that
 hold useful information:
@@ -22,4 +24,29 @@ def test_readme(cookies):
     assert readme_lines == ["helloworld", "=========="]
 ```
 
+## Cookies Session
+``cookies_session`` is the same as `cookies` but the instance uses the ["session" scope].
+
+This is useful when you want to run multiple tests on the same cookiecutter instance without having to setup and teardown with each test.
+
+```python
+    @pytest.fixture(scope="module")
+    def bakery(cookies_session):
+        """create a session-wide cookiecutter instance"""
+        result = cookies_session.bake(extra_context={
+            "value_1": "value_1",
+            "value_2": "value_2",
+        })
+        yield result
+
+    def test_session_project_path(bakery):
+        """The first test checks for value 1"""
+        assert bakery.context["value_1"] == "value_1"
+
+    def test_session_same_project_path(bakery):
+        """The second test checks for value 2"""
+        assert bakery.context["value_2"] == "value_2"
+```
+
 [path]: https://docs.python.org/3/library/pathlib.html#pathlib.Path
+["session" scope]: https://docs.pytest.org/en/7.1.x/how-to/fixtures.html?highlight=scope#scope-sharing-fixtures-across-classes-modules-packages-or-session
