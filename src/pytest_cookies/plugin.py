@@ -163,7 +163,7 @@ def cookies_session(request, tmpdir_factory, _cookiecutter_config_file):
 
     Run cookiecutter:
         @pytest.fixture(scope="module")
-        def bakery(request, context, cookies_session):
+        def bakery(cookies_session):
             """create a session-wide cookiecutter instance"""
             result = cookies_session.bake(extra_context={
                 "value_1": "value_1",
